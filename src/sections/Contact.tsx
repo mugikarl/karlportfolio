@@ -1,4 +1,4 @@
-import { FaEnvelope, FaFacebook, FaLinkedin } from "react-icons/fa";
+import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
 
 const contacts = [
   {
@@ -9,18 +9,18 @@ const contacts = [
     icon: FaEnvelope,
   },
   {
-    id: "facebook",
-    label: "Facebook",
-    value: "facebook.com/juznatividad",
-    href: "https://facebook.com/juznatividad",
-    icon: FaFacebook,
-  },
-  {
     id: "linkedin",
     label: "LinkedIn",
     value: "linkedin.com/in/mugikarl",
     href: "https://linkedin.com/in/mugikarl",
     icon: FaLinkedin,
+  },
+  {
+    id: "github",
+    label: "Github",
+    value: "github.com/mugikarl",
+    href: "https://github.com/mugikarl",
+    icon: FaGithub,
   },
 ];
 
