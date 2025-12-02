@@ -6,6 +6,7 @@ import projectAdminPortal from "../assets/Project-AdminPortal.jpg";
 import projectNotesApp from "../assets/Project-NotesApp.png";
 import projectCart from "../assets/Project-shoppingcart.png";
 import projectSMS from "../assets/Project-SMS.png";
+import projectJedd from "../assets/Project-Jedd.png";
 
 export type Project = {
   id: string;
@@ -62,6 +63,18 @@ export const projects: Project[] = [
     contributions: [
       "Designed the initial UI of the website",
       "Led the final designs of the UI of the website",
+    ],
+  },
+  {
+    id: "jedd",
+    title: "JEDD Estate UI Design",
+    description: "A proposed Website UI for the JEDD Estate",
+    image: projectJedd,
+    tech: ["Figma"],
+    url: "https://www.figma.com/design/vVCLtNmPAKfxgLvbn2Y1Lb/JEDD-Real-Estate?node-id=0-1&p=f",
+    contributions: [
+      "Designed the major pages of the website",
+      "Majorly contributed in the Prototype flow",
     ],
   },
   {
