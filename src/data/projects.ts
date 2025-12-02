@@ -14,6 +14,7 @@ export type Project = {
   image: string;
   tech: string[];
   url?: string;
+  contributions: string[];
 };
 
 export const projects: Project[] = [
@@ -25,6 +26,10 @@ export const projects: Project[] = [
     image: projectWingman,
     tech: ["React Vite", "Javascript", "Django", "Python"],
     url: "https://github.com/mugikarl/Wingman",
+    contributions: [
+      "Led the entire development, from setting up the backend and frontend to setting up API calls and make components",
+      "Majorly contributed to setting up Supabase to the system",
+    ],
   },
   {
     id: "chatbot",
@@ -42,6 +47,10 @@ export const projects: Project[] = [
       "TF-IDF",
     ],
     url: "https://github.com/joamdlim/addu-admissions-chatbot",
+    contributions: [
+      "Connected each technologies together",
+      "Led the workflow of consistent document retrievals using semantic similarity with the proposed NLPs",
+    ],
   },
   {
     id: "palaro2024",
@@ -50,6 +59,10 @@ export const projects: Project[] = [
     image: projectPalaro,
     tech: ["Next.js", "TypeScript", "Tailwind CSS"],
     url: "https://samahan-palaro-2024-samahan-system-developments-projects.vercel.app",
+    contributions: [
+      "Designed the initial UI of the website",
+      "Led the final designs of the UI of the website",
+    ],
   },
   {
     id: "ordermenu",
@@ -59,6 +72,10 @@ export const projects: Project[] = [
     image: projectOrderMenu,
     tech: ["Django", "Python", "HTML"],
     url: "https://github.com/mugikarl/sales-subsystem",
+    contributions: [
+      "Led the development",
+      "Contributed in making the Create and Update operations",
+    ],
   },
   {
     id: "adminportal",
@@ -68,6 +85,10 @@ export const projects: Project[] = [
     image: projectAdminPortal,
     tech: ["Flutter", "Dart"],
     url: "https://github.com/mugikarl/admin_web_portal_f2",
+    contributions: [
+      "Contributed in designing the UI of the Portal",
+      "Also contributed in connecting the Firebase to the Portal",
+    ],
   },
   {
     id: "notes",
@@ -77,6 +98,7 @@ export const projects: Project[] = [
     image: projectNotesApp,
     tech: ["React Vite", "TypeScript", "Chart.js", "Node.js"],
     url: "https://github.com/maeEsp/notesApp",
+    contributions: ["Contributed in creating components"],
   },
   {
     id: "cart",
@@ -86,6 +108,7 @@ export const projects: Project[] = [
     image: projectCart,
     tech: ["React Vite", "JavaScript"],
     url: "https://github.com/mugikarl/shopping-cart",
+    contributions: ["Developed the whole project"],
   },
   {
     id: "student",
@@ -95,5 +118,9 @@ export const projects: Project[] = [
     image: projectSMS,
     tech: ["Django", "Python", "HTML"],
     url: "https://github.com/bjgarapoc/student_management_system",
+    contributions: [
+      "Led the whole development",
+      "Contributed in Create and Update operations",
+    ],
   },
 ];

@@ -95,6 +95,19 @@ const ProjectModal = ({
           {project.description}
         </p>
 
+        {project.contributions && project.contributions.length > 0 && (
+          <div className="mt-4">
+            <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+              Contributions
+            </h3>
+            <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-slate-700">
+              {project.contributions.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
         <div className="mt-6 overflow-hidden rounded-2xl bg-slate-100">
           <img
             src={project.image}
