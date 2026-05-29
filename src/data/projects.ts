@@ -7,6 +7,7 @@ import projectNotesApp from "../assets/Project-NotesApp.png";
 import projectCart from "../assets/Project-shoppingcart.png";
 import projectSMS from "../assets/Project-SMS.png";
 import projectJedd from "../assets/Project-Jedd.png";
+import projectAIAutomation from "../assets/Project-AUTOMATION.jpeg";
 
 export type Project = {
   id: string;
@@ -88,6 +89,17 @@ export const projects: Project[] = [
     contributions: [
       "Led the development",
       "Contributed in making the Create and Update operations",
+    ],
+  },
+  {
+    id: "aiautomation",
+    title: "AI Automation System",
+    description:
+      "An automated email marketing workflow that fetches lead data from Google Sheets, filters and validates contact information, uses GPT-4o to generate personalized, witty email copy, and dispatches the messages via Gmail while logging delivery status back to the sheet with built-in rate limiting.",
+    image: projectAIAutomation,
+    tech: ["n8n"],
+    contributions: [
+      "Designed and implemented the workflow of the automation system",
     ],
   },
   {
