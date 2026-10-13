@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Impeccable working files (screenshots, decision-page state, live mode)
+.impeccable/review/*.png
+.impeccable/questions/
+.impeccable/live/
+
+# Impeccable provenance sidecar; would be publicly served from public/
+public/*.json
