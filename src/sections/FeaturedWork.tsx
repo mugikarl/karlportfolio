@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import PlateImage from "../components/PlateImage";
+import { FEATURED_PLATE_SIZES } from "../components/preloadPlate";
 import WorkLinkLabel from "../components/WorkLinkLabel";
 import { linkKindLabel, type Work } from "../data/projects";
 
@@ -28,7 +29,7 @@ const FeaturedWork = ({ work, number }: FeaturedWorkProps) => {
         <PlateImage
           plate={work.plate}
           alt={work.alt}
-          sizes="(min-width: 1024px) 70vw, 100vw"
+          sizes={FEATURED_PLATE_SIZES}
           priority={number === 1}
         />
       </figure>

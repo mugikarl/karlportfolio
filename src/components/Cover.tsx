@@ -1,14 +1,26 @@
-import type { MouseEvent } from "react";
+import { useEffect, type MouseEvent } from "react";
 import { featuredWorks } from "../data/projects";
 import { education, profile } from "../data/profile";
 import { indexSections } from "../data/sections";
 import { isPlainClick } from "./isPlainClick";
+import { preloadPlate } from "./preloadPlate";
 
 interface CoverProps {
   onEnter: (id: string, source: HTMLElement | null) => void;
 }
 
 const Cover = ({ onEnter }: CoverProps) => {
+  // Warm all four plates once the cover is idle; hover and focus warm one sooner.
+  useEffect(() => {
+    const warm = () => featuredWorks.forEach((work) => preloadPlate(work.plate));
+    if ("requestIdleCallback" in window) {
+      const id = window.requestIdleCallback(warm, { timeout: 2000 });
+      return () => window.cancelIdleCallback(id);
+    }
+    const id = setTimeout(warm, 1200);
+    return () => clearTimeout(id);
+  }, []);
+
   const handleEnter = (event: MouseEvent<HTMLAnchorElement>, id: string) => {
     if (!isPlainClick(event)) return;
     event.preventDefault();
@@ -35,7 +47,7 @@ const Cover = ({ onEnter }: CoverProps) => {
         <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
           <a
             href={`mailto:${profile.email}`}
-            className="inline-flex min-h-11 items-center bg-spot px-5 text-[0.9375rem] font-semibold text-paper transition-[background-color,transform] duration-[160ms] ease-out-strong hover:bg-spot-deep active:scale-[0.97]"
+            className="inline-flex min-h-11 items-center bg-spot px-5 text-[0.9375rem] font-semibold text-paper transition-[background-color,scale] duration-[160ms] ease-out-strong hover:bg-spot-deep active:scale-[0.97]"
           >
             Email Karl
           </a>
@@ -43,7 +55,7 @@ const Cover = ({ onEnter }: CoverProps) => {
             href={profile.resume}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex min-h-11 items-center text-[0.9375rem] font-semibold underline decoration-ink/30 transition-[text-decoration-color,transform] duration-[160ms] ease-out-strong hover:decoration-ink active:scale-[0.97]"
+            className="inline-flex min-h-11 items-center text-[0.9375rem] font-semibold underline decoration-ink/30 transition-[text-decoration-color,scale] duration-[160ms] ease-out-strong hover:decoration-ink active:scale-[0.97]"
           >
             Resume (PDF)
             <span className="sr-only"> (opens in a new tab)</span>
@@ -66,6 +78,8 @@ const Cover = ({ onEnter }: CoverProps) => {
               <a
                 href={`#${work.id}`}
                 onClick={(event) => handleEnter(event, work.id)}
+                onPointerEnter={() => preloadPlate(work.plate)}
+                onFocus={() => preloadPlate(work.plate)}
                 className="group grid grid-cols-[7rem_minmax(0,1fr)] items-center gap-x-4 sm:block"
               >
                 <picture className="block">
@@ -79,7 +93,7 @@ const Cover = ({ onEnter }: CoverProps) => {
                     width={800}
                     height={450}
                     decoding="async"
-                    className="aspect-[16/9] w-full bg-paper-deep object-cover object-top outline outline-1 -outline-offset-1 outline-ink/10 transition-[outline-color] duration-200 ease-[ease] group-hover:outline-ink/50"
+                    className="aspect-[16/9] w-full bg-paper-deep object-cover object-top outline outline-1 -outline-offset-1 outline-ink/10 [transition:outline-color_200ms_ease,scale_160ms_var(--ease-out-strong)] group-hover:outline-ink/50 group-active:scale-[0.98]"
                   />
                 </picture>
                 <span className="flex items-baseline gap-x-2 text-[0.9375rem] leading-snug sm:mt-3 sm:text-base">

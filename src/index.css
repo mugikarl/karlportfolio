@@ -100,7 +100,7 @@
 }
 
 ::view-transition-new(root) {
-  animation: vt-in 300ms var(--ease-out-strong) 240ms both;
+  animation: vt-in 300ms var(--ease-out-strong) 160ms both;
 }
 
 ::view-transition-group(active-plate) {
@@ -127,11 +127,11 @@ html[data-vt-xfade]::view-transition-old(active-plate) {
   opacity: 1;
   height: 100%;
   object-fit: cover;
-  animation: vt-out 220ms var(--ease-out-strong) both;
+  animation: vt-xfade-out 220ms var(--ease-out-strong) both;
 }
 
 html[data-vt-xfade]::view-transition-new(active-plate) {
-  animation: vt-fade 220ms var(--ease-out-strong) both;
+  animation: vt-xfade-in 220ms var(--ease-out-strong) both;
 }
 
 html[data-vt="exit"]::view-transition-old(root) {
@@ -152,6 +152,27 @@ html[data-vt="exit"]::view-transition-new(root) {
   from {
     opacity: 0;
     transform: translateY(8px);
+  }
+}
+
+/* A light blur at the midpoint blends two different crops into one image. */
+@keyframes vt-xfade-out {
+  50% {
+    filter: blur(2px);
+  }
+  to {
+    opacity: 0;
+    filter: blur(2px);
+  }
+}
+
+@keyframes vt-xfade-in {
+  from {
+    opacity: 0;
+    filter: blur(2px);
+  }
+  50% {
+    filter: blur(2px);
   }
 }
 

@@ -51,7 +51,7 @@ const WorksIndex = ({ activeId, onCover }: WorksIndexProps) => {
         <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
           <a
             href={`mailto:${profile.email}`}
-            className="inline-flex min-h-11 items-center bg-spot px-5 text-[0.9375rem] font-semibold text-paper transition-[background-color,transform] duration-[160ms] ease-out-strong hover:bg-spot-deep active:scale-[0.97]"
+            className="inline-flex min-h-11 items-center bg-spot px-5 text-[0.9375rem] font-semibold text-paper transition-[background-color,scale] duration-[160ms] ease-out-strong hover:bg-spot-deep active:scale-[0.97]"
           >
             Email Karl
           </a>
@@ -59,7 +59,7 @@ const WorksIndex = ({ activeId, onCover }: WorksIndexProps) => {
             href={profile.resume}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex min-h-11 items-center text-[0.9375rem] font-semibold underline decoration-ink/30 transition-[text-decoration-color,transform] duration-[160ms] ease-out-strong hover:decoration-ink active:scale-[0.97]"
+            className="inline-flex min-h-11 items-center text-[0.9375rem] font-semibold underline decoration-ink/30 transition-[text-decoration-color,scale] duration-[160ms] ease-out-strong hover:decoration-ink active:scale-[0.97]"
           >
             Resume (PDF)
             <span className="sr-only"> (opens in a new tab)</span>

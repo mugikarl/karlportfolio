@@ -79,7 +79,7 @@ const swapView = (
       plate.style.opacity = "1";
       figure.style.viewTransitionName = SHARED;
       landed = figure;
-      await Promise.race([plate.decode().catch(() => undefined), wait(400)]);
+      await Promise.race([plate.decode().catch(() => undefined), wait(120)]);
     }
   });
 
