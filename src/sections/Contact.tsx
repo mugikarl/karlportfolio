@@ -1,64 +1,93 @@
-import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
-
-const contacts = [
-  {
-    id: "email",
-    label: "Email",
-    value: "mugikarljustin@gmail.com",
-    href: "mailto:mugikarljustin@gmail.com",
-    icon: FaEnvelope,
-  },
-  {
-    id: "linkedin",
-    label: "LinkedIn",
-    value: "linkedin.com/in/mugikarl",
-    href: "https://linkedin.com/in/mugikarl",
-    icon: FaLinkedin,
-  },
-  {
-    id: "github",
-    label: "Github",
-    value: "github.com/mugikarl",
-    href: "https://github.com/mugikarl",
-    icon: FaGithub,
-  },
-];
+import { FiArrowUpRight } from "react-icons/fi";
+import portrait from "../assets/plates/portrait-480.webp";
+import { profile } from "../data/profile";
 
 const Contact = () => {
+  const year = new Date().getFullYear();
+
   return (
-    <section id="contact" className="py-20">
-      <div className="space-y-4 text-center md:text-left">
-        <p className="text-sm uppercase tracking-[0.4em] text-blue-600">
-          Contact
-        </p>
+    <section
+      id="contact"
+      aria-labelledby="contact-title"
+      className="scroll-mt-4 px-5 pt-14 pb-10 sm:px-8 lg:px-14 lg:pt-20"
+    >
+      <h2
+        id="contact-title"
+        tabIndex={-1}
+        className="text-[clamp(1.875rem,2.8vw,2.875rem)] leading-[1.02] font-semibold tracking-[-0.03em]"
+      >
+        Contact
+      </h2>
+      <p className="mt-3 max-w-[44ch] font-serif text-xl leading-snug text-graphite">
+        Open to remote and onsite roles, including Davao City, and to
+        freelance work. Based in {profile.location}.
+      </p>
+
+      <div className="mt-10 grid gap-x-12 gap-y-10 border-t border-ink pt-10 md:grid-cols-[minmax(0,1fr)_auto]">
+        <div>
+          <a
+            href={`mailto:${profile.email}`}
+            className="inline-block text-[clamp(1.5rem,3.4vw,3rem)] leading-tight font-semibold tracking-[-0.03em] break-all text-spot underline decoration-spot/30 decoration-2 transition-colors duration-200 ease-[ease] hover:text-spot-deep hover:decoration-spot-deep sm:break-normal"
+          >
+            {profile.email}
+          </a>
+
+          <ul className="mt-8 max-w-md border-t border-rule">
+            {profile.links.map((link) => (
+              <li key={link.id} className="border-b border-rule">
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="grid min-h-11 grid-cols-[6.5rem_1fr_auto] items-center gap-x-3 py-2.5"
+                >
+                  <span className="text-graphite">{link.label}</span>
+                  <span className="font-medium">{link.handle}</span>
+                  <FiArrowUpRight
+                    aria-hidden
+                    size={16}
+                  />
+                  <span className="sr-only"> (opens in a new tab)</span>
+                </a>
+              </li>
+            ))}
+            <li className="border-b border-rule">
+              <a
+                href={profile.resume}
+                target="_blank"
+                rel="noreferrer"
+                className="grid min-h-11 grid-cols-[6.5rem_1fr_auto] items-center gap-x-3 py-2.5"
+              >
+                <span className="text-graphite">Resume</span>
+                <span className="font-medium">PDF, 2 pages</span>
+                <FiArrowUpRight
+                  aria-hidden
+                  size={16}
+                />
+                <span className="sr-only"> (opens in a new tab)</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <img
+          src={portrait}
+          alt="Portrait of Karl Natividad"
+          width={480}
+          height={593}
+          loading="lazy"
+          decoding="async"
+          className="order-first h-auto w-24 bg-paper-deep md:order-none md:w-40"
+        />
       </div>
 
-      <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {contacts.map(({ id, href, icon: Icon, label, value }) => (
-          <a
-            key={id}
-            href={href}
-            target="_blank"
-            rel="noreferrer"
-            className="group flex flex-col gap-3 rounded-2xl border border-blue-100 bg-white/70 p-5 shadow-sm transition hover:-translate-y-1 hover:border-blue-300 hover:shadow-lg"
-          >
-            <div className="flex items-center gap-3">
-              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-blue-600">
-                <Icon size={22} aria-hidden />
-              </span>
-              <div>
-                <p className="text-xs uppercase tracking-[0.3em] text-blue-600">
-                  {label}
-                </p>
-                <p className="text-lg font-semibold text-slate-900">{value}</p>
-              </div>
-            </div>
-            <span className="text-sm font-medium text-blue-600">
-              {label === "Email" ? "Say hello" : "Visit profile"} →
-            </span>
-          </a>
-        ))}
-      </div>
+      <footer className="mt-16 flex flex-col gap-2 border-t border-rule pt-5 text-sm text-graphite md:flex-row md:justify-between">
+        <p>© {year} {profile.name}</p>
+        <p>
+          Set in Schibsted Grotesk and Source Serif 4. Built with React,
+          TypeScript, Vite, and Tailwind CSS.
+        </p>
+      </footer>
     </section>
   );
 };

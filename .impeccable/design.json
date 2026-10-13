@@ -1,0 +1,387 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-13T12:07:26.264Z",
+  "title": "Design System: Karl Natividad",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "Uncoated Paper",
+        "canonical": "oklch(95.7% 0.004 106.5)",
+        "tonalRamp": [
+          "#0b0b09",
+          "#242422",
+          "#40403d",
+          "#5e5e5b",
+          "#80807e",
+          "#a5a5a2",
+          "#cbcbc8",
+          "#eeeeed"
+        ]
+      },
+      "paper-deep": {
+        "role": "neutral",
+        "displayName": "Paper Shadow Tone",
+        "canonical": "oklch(92.4% 0.007 106.5)",
+        "tonalRamp": [
+          "#0b0b08",
+          "#242421",
+          "#40403c",
+          "#5e5e5a",
+          "#80807c",
+          "#a5a5a0",
+          "#cbcbc6",
+          "#efefec"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Press Ink",
+        "canonical": "oklch(19.1% 0.002 106.6)",
+        "tonalRamp": [
+          "#0b0b0a",
+          "#242423",
+          "#40403f",
+          "#5e5e5c",
+          "#80807f",
+          "#a5a5a3",
+          "#cacac9",
+          "#eeeeee"
+        ]
+      },
+      "graphite": {
+        "role": "neutral",
+        "displayName": "Graphite",
+        "canonical": "oklch(47.7% 0.008 106.7)",
+        "tonalRamp": [
+          "#0b0b08",
+          "#242420",
+          "#40403b",
+          "#5e5e59",
+          "#81817b",
+          "#a5a59f",
+          "#cbcbc5",
+          "#efefec"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "oklch(85.3% 0.010 106.6)",
+        "tonalRamp": [
+          "#0c0b07",
+          "#24241f",
+          "#40403a",
+          "#5e5e58",
+          "#81817a",
+          "#a5a59e",
+          "#cbcbc4",
+          "#efefeb"
+        ]
+      },
+      "spot": {
+        "role": "primary",
+        "displayName": "Ultramarine Spot",
+        "canonical": "oklch(42.6% 0.220 267.7)",
+        "tonalRamp": [
+          "#160067",
+          "#11008c",
+          "#171cb1",
+          "#2b47d7",
+          "#4870ff",
+          "#6997ff",
+          "#8dbfff",
+          "#ceedff"
+        ]
+      },
+      "spot-deep": {
+        "role": "primary",
+        "displayName": "Deep Ultramarine",
+        "canonical": "oklch(33.9% 0.173 268.1)",
+        "tonalRamp": [
+          "#0c0053",
+          "#0c0075",
+          "#1c2e99",
+          "#3551be",
+          "#5477e6",
+          "#769dff",
+          "#9ac4ff",
+          "#d6edff"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display-cover": {
+        "displayName": "Cover Display",
+        "purpose": "Karl's name on the cover only, broken over two lines."
+      },
+      "display": {
+        "displayName": "Display",
+        "purpose": "Karl's name at the top of the book's index column, also the link back to the cover."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Work titles and section titles; featured titles carry their number in graphite at 400."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Entries inside lists: positions, degree, other-work titles."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "Serif one-sentence summary under each headline, graphite, max 52ch; also the motto under the role line."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Serif work notes and experience summaries, max 65ch, hung as a hyphen list."
+      },
+      "data": {
+        "displayName": "Data",
+        "purpose": "Fact rows, index entries, cover thumbnail titles, buttons and nav links, with tabular figures."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Index heading, years, education and location lines, footer. Sentence case, untracked."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-out-strong",
+        "value": "cubic-bezier(0.23, 1, 0.32, 1)",
+        "purpose": "Button hover and press, plus rotation, plate image load fade, and the page fades in the cover-to-book View Transition."
+      },
+      {
+        "name": "ease-in-out-strong",
+        "value": "cubic-bezier(0.77, 0, 0.175, 1)",
+        "purpose": "Travelling motion: the thumbnail-to-plate flight and the index mark."
+      },
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Other-work disclosure body entering (fade plus 4px drop)."
+      },
+      {
+        "name": "duration-press",
+        "value": "160ms",
+        "purpose": "Primary and quiet action hover color and active scale(0.97), on ease-out-strong."
+      },
+      {
+        "name": "duration-color",
+        "value": "200ms",
+        "purpose": "Color, underline, outline and wash transitions on links, index entries, thumbnails and rows (CSS ease); plate image load fade; plus rotation and disclosure body."
+      },
+      {
+        "name": "duration-index-mark",
+        "value": "250ms",
+        "purpose": "Index mark translateY plus scaleY to the active row, on ease-in-out-strong; none under reduced motion."
+      },
+      {
+        "name": "vt-plate-flight",
+        "value": "460ms",
+        "purpose": "View Transition group 'active-plate': the chosen thumbnail box flies onto the work's figure, on ease-in-out-strong. Old image hidden; new image object-fit cover, object-position top."
+      },
+      {
+        "name": "vt-cover-out",
+        "value": "160ms",
+        "purpose": "Old root fades out on enter, ease-out-strong."
+      },
+      {
+        "name": "vt-book-in",
+        "value": "300ms, 240ms delay",
+        "purpose": "New root fades in rising 8px on enter, ease-out-strong."
+      },
+      {
+        "name": "vt-xfade",
+        "value": "220ms",
+        "purpose": "When the thumbnail is cropped differently from its plate (data-xfade), old and new images cross-fade inside the flying box."
+      },
+      {
+        "name": "vt-exit",
+        "value": "120ms out, 220ms in after 60ms",
+        "purpose": "Book to cover: page fade only, nothing travels."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "200ms fade",
+        "purpose": "No flight and no mark slide; the incoming view fades over 200ms, disclosure fades only, smooth scroll off."
+      }
+    ],
+    "outlines": [
+      {
+        "name": "focus-ring",
+        "value": "2px solid #2034c4, offset 3px",
+        "purpose": "Global :focus-visible treatment for links and controls. Programmatically focused h1/h2 with tabindex -1 show no ring."
+      },
+      {
+        "name": "plate-edge",
+        "value": "1px solid rgb(20 20 19 / 0.1), offset -1px",
+        "purpose": "Inset edge on plate images and cover thumbnails so pale screenshots hold against the paper; thumbnails darken to 50% ink on hover."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      },
+      {
+        "name": "container-max",
+        "value": "1680px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The single filled action per view (\"Email Karl\"). Square, spot fill, spot-deep on hover, slight press on active.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Email Karl</a>",
+      "css": ":host{--color-paper:#f1f1ee;--color-paper-deep:#e6e6e1;--color-ink:#141413;--color-graphite:#5d5d58;--color-rule:#cfcfc8;--color-spot:#2034c4;--color-spot-deep:#16248f;--font-sans:\"Schibsted Grotesk Variable\",ui-sans-serif,system-ui,sans-serif;--font-serif:\"Source Serif 4 Variable\",ui-serif,Georgia,serif;--ease-out-expo:cubic-bezier(0.16,1,0.3,1);--ease-out-strong:cubic-bezier(0.23,1,0.32,1);--ease-in-out-strong:cubic-bezier(0.77,0,0.175,1);}.ds-btn-primary{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;background:var(--color-spot);color:var(--color-paper);font-family:var(--font-sans);font-size:0.9375rem;font-weight:600;text-decoration:none;border-radius:0;transition:background-color 160ms var(--ease-out-strong),transform 160ms var(--ease-out-strong);}.ds-btn-primary:hover{background:var(--color-spot-deep);}.ds-btn-primary:focus-visible{outline:2px solid var(--color-spot);outline-offset:3px;}.ds-btn-primary:active{transform:scale(0.97);}"
+    },
+    {
+      "name": "Quiet Action",
+      "kind": "button",
+      "refersTo": "link-quiet",
+      "description": "Secondary action beside the primary button (\"Resume (PDF)\"): ink text with a faint underline that darkens on hover.",
+      "html": "<a class=\"ds-link-quiet\" href=\"#\">Resume (PDF)</a>",
+      "css": ":host{--color-paper:#f1f1ee;--color-paper-deep:#e6e6e1;--color-ink:#141413;--color-graphite:#5d5d58;--color-rule:#cfcfc8;--color-spot:#2034c4;--color-spot-deep:#16248f;--font-sans:\"Schibsted Grotesk Variable\",ui-sans-serif,system-ui,sans-serif;--font-serif:\"Source Serif 4 Variable\",ui-serif,Georgia,serif;--ease-out-expo:cubic-bezier(0.16,1,0.3,1);--ease-out-strong:cubic-bezier(0.23,1,0.32,1);--ease-in-out-strong:cubic-bezier(0.77,0,0.175,1);}.ds-link-quiet{display:inline-flex;align-items:center;min-height:44px;color:var(--color-ink);font-family:var(--font-sans);font-size:0.9375rem;font-weight:600;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:0.22em;text-decoration-color:rgb(20 20 19 / 0.3);transition:text-decoration-color 160ms var(--ease-out-strong),transform 160ms var(--ease-out-strong);}.ds-link-quiet:hover{text-decoration-color:var(--color-ink);}.ds-link-quiet:focus-visible{outline:2px solid var(--color-spot);outline-offset:3px;}.ds-link-quiet:active{transform:scale(0.97);}"
+    },
+    {
+      "name": "Work Link",
+      "kind": "custom",
+      "refersTo": "link-work",
+      "description": "Spot link in a data column with an up-right arrow; hover deepens text and underline. Private work shows a graphite lock label instead.",
+      "html": "<a class=\"ds-link-work\" href=\"#\"><span>pickleinprestige.com</span><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><line x1=\"7\" y1=\"17\" x2=\"17\" y2=\"7\"></line><polyline points=\"7 7 17 7 17 17\"></polyline></svg></a><br><span class=\"ds-link-private\"><svg width=\"13\" height=\"13\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"11\" width=\"18\" height=\"11\" rx=\"2\" ry=\"2\"></rect><path d=\"M7 11V7a5 5 0 0 1 10 0v4\"></path></svg>Private repository</span>",
+      "css": ":host{--color-paper:#f1f1ee;--color-paper-deep:#e6e6e1;--color-ink:#141413;--color-graphite:#5d5d58;--color-rule:#cfcfc8;--color-spot:#2034c4;--color-spot-deep:#16248f;--font-sans:\"Schibsted Grotesk Variable\",ui-sans-serif,system-ui,sans-serif;--font-serif:\"Source Serif 4 Variable\",ui-serif,Georgia,serif;--ease-out-expo:cubic-bezier(0.16,1,0.3,1);--ease-out-strong:cubic-bezier(0.23,1,0.32,1);--ease-in-out-strong:cubic-bezier(0.77,0,0.175,1);}.ds-link-work{display:inline-flex;align-items:flex-start;gap:4px;font-family:var(--font-sans);font-size:0.9375rem;font-weight:500;color:var(--color-spot);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:0.22em;text-decoration-color:rgb(32 52 196 / 0.4);transition:color 200ms,text-decoration-color 200ms;}.ds-link-work svg{margin-top:0.15em;flex-shrink:0;}.ds-link-work:hover{color:var(--color-spot-deep);text-decoration-color:var(--color-spot-deep);}.ds-link-work:focus-visible{outline:2px solid var(--color-spot);outline-offset:3px;}.ds-link-private{display:inline-flex;align-items:flex-start;gap:6px;margin-top:8px;font-family:var(--font-sans);font-size:0.9375rem;color:var(--color-graphite);}.ds-link-private svg{margin-top:0.2em;flex-shrink:0;}"
+    },
+    {
+      "name": "Data Column",
+      "kind": "card",
+      "refersTo": "data-row",
+      "description": "Ruled definition list of recorded facts: ink rule on top, hairlines between rows, graphite terms in a 6.5rem column.",
+      "html": "<dl class=\"ds-data\"><div><dt>Period</dt><dd>Jul 2026&nbsp;- present</dd></div><div><dt>Context</dt><dd>Freelance</dd></div><div><dt>Role</dt><dd>Role as recorded</dd></div><div><dt>Stack</dt><dd>Stack, comma separated</dd></div></dl>",
+      "css": ":host{--color-paper:#f1f1ee;--color-paper-deep:#e6e6e1;--color-ink:#141413;--color-graphite:#5d5d58;--color-rule:#cfcfc8;--color-spot:#2034c4;--color-spot-deep:#16248f;--font-sans:\"Schibsted Grotesk Variable\",ui-sans-serif,system-ui,sans-serif;--font-serif:\"Source Serif 4 Variable\",ui-serif,Georgia,serif;--ease-out-expo:cubic-bezier(0.16,1,0.3,1);--ease-out-strong:cubic-bezier(0.23,1,0.32,1);--ease-in-out-strong:cubic-bezier(0.77,0,0.175,1);}.ds-data{margin:0;max-width:320px;border-top:1px solid var(--color-ink);font-family:var(--font-sans);font-size:0.9375rem;color:var(--color-ink);}.ds-data div{display:grid;grid-template-columns:6.5rem 1fr;column-gap:12px;padding:10px 0;border-bottom:1px solid var(--color-rule);}.ds-data dt{color:var(--color-graphite);}.ds-data dd{margin:0;line-height:1.375;font-variant-numeric:tabular-nums;}"
+    },
+    {
+      "name": "Works Index",
+      "kind": "nav",
+      "refersTo": "index-entry",
+      "description": "Numbered index of works with years; the active entry is ink and semibold, and a 3px spot mark moves and stretches to it.",
+      "html": "<ol class=\"ds-index\"><span class=\"ds-index-mark\" style=\"transform:translateY(45px) scaleY(45)\"></span><li><a href=\"#\"><span>1</span><span>Prestige Pickleball Society</span><span>2026</span></a></li><li><a href=\"#\" aria-current=\"location\"><span>2</span><span>Admissions Chatbot</span><span>2025</span></a></li><li><a href=\"#\"><span>3</span><span>Wingman</span><span>2025</span></a></li></ol>",
+      "css": ":host{--color-paper:#f1f1ee;--color-paper-deep:#e6e6e1;--color-ink:#141413;--color-graphite:#5d5d58;--color-rule:#cfcfc8;--color-spot:#2034c4;--color-spot-deep:#16248f;--font-sans:\"Schibsted Grotesk Variable\",ui-sans-serif,system-ui,sans-serif;--font-serif:\"Source Serif 4 Variable\",ui-serif,Georgia,serif;--ease-out-expo:cubic-bezier(0.16,1,0.3,1);--ease-out-strong:cubic-bezier(0.23,1,0.32,1);--ease-in-out-strong:cubic-bezier(0.77,0,0.175,1);}.ds-index{position:relative;list-style:none;margin:0;padding:0;max-width:340px;border-top:1px solid var(--color-rule);font-family:var(--font-sans);font-size:0.9375rem;}.ds-index li{border-bottom:1px solid var(--color-rule);}.ds-index a{display:grid;grid-template-columns:1.5rem 1fr auto;align-items:baseline;column-gap:8px;min-height:44px;box-sizing:border-box;padding:10px 0 10px 12px;color:var(--color-graphite);font-weight:500;text-decoration:none;font-variant-numeric:tabular-nums;transition:color 200ms;}.ds-index a span:last-child{font-size:0.875rem;}.ds-index a:hover{color:var(--color-ink);}.ds-index a[aria-current]{color:var(--color-ink);}.ds-index a[aria-current] span:nth-child(2){font-weight:600;}.ds-index a:focus-visible{outline:2px solid var(--color-spot);outline-offset:3px;}.ds-index-mark{position:absolute;top:0;left:0;width:3px;height:1px;transform-origin:top;background:var(--color-spot);transition:transform 250ms var(--ease-in-out-strong);}"
+    },
+    {
+      "name": "Cover Thumbnail",
+      "kind": "custom",
+      "refersTo": "cover-thumb",
+      "description": "Calling-card contents entry: 16:9 top-cropped screenshot with a graphite numeral, title and year; edge and title underline darken on hover. Unboxed.",
+      "html": "<a class=\"ds-thumb\" href=\"#\"><span class=\"ds-thumb-img\" aria-hidden=\"true\"></span><span class=\"ds-thumb-cap\"><span class=\"n\">1</span><span class=\"t\">The Prestige Pickleball Society</span><span class=\"y\">2026</span></span></a>",
+      "css": ":host{--color-paper:#f1f1ee;--color-paper-deep:#e6e6e1;--color-ink:#141413;--color-graphite:#5d5d58;--color-rule:#cfcfc8;--color-spot:#2034c4;--color-spot-deep:#16248f;--font-sans:\"Schibsted Grotesk Variable\",ui-sans-serif,system-ui,sans-serif;--font-serif:\"Source Serif 4 Variable\",ui-serif,Georgia,serif;--ease-out-expo:cubic-bezier(0.16,1,0.3,1);--ease-out-strong:cubic-bezier(0.23,1,0.32,1);--ease-in-out-strong:cubic-bezier(0.77,0,0.175,1);}.ds-thumb{display:block;max-width:300px;color:var(--color-ink);text-decoration:none;font-family:var(--font-sans);}.ds-thumb-img{display:block;aspect-ratio:16/9;background:var(--color-paper-deep);outline:1px solid rgb(20 20 19 / 0.1);outline-offset:-1px;transition:outline-color 200ms ease;}.ds-thumb-cap{display:flex;align-items:baseline;column-gap:8px;margin-top:12px;font-size:1rem;line-height:1.375;}.ds-thumb .n{width:1.25rem;flex-shrink:0;color:var(--color-graphite);font-variant-numeric:tabular-nums;}.ds-thumb .t{font-weight:600;text-decoration:underline;text-decoration-color:transparent;text-underline-offset:4px;transition:text-decoration-color 200ms ease;}.ds-thumb .y{margin-left:auto;padding-left:12px;font-size:0.875rem;color:var(--color-graphite);font-variant-numeric:tabular-nums;}.ds-thumb:hover .ds-thumb-img{outline-color:rgb(20 20 19 / 0.5);}.ds-thumb:hover .t{text-decoration-color:rgb(20 20 19 / 0.4);}.ds-thumb:focus-visible{outline:2px solid var(--color-spot);outline-offset:3px;}"
+    },
+    {
+      "name": "Plate",
+      "kind": "custom",
+      "refersTo": "plate-fallback",
+      "description": "A work screenshot at full column width with a faint inset ink edge; no caption, the numbered headline names it.",
+      "html": "<figure class=\"ds-plate\"><div class=\"ds-plate-img\" role=\"img\" aria-label=\"Screenshot placeholder\">Screenshot unavailable right now.</div></figure>",
+      "css": ":host{--color-paper:#f1f1ee;--color-paper-deep:#e6e6e1;--color-ink:#141413;--color-graphite:#5d5d58;--color-rule:#cfcfc8;--color-spot:#2034c4;--color-spot-deep:#16248f;--font-sans:\"Schibsted Grotesk Variable\",ui-sans-serif,system-ui,sans-serif;--font-serif:\"Source Serif 4 Variable\",ui-serif,Georgia,serif;--ease-out-expo:cubic-bezier(0.16,1,0.3,1);--ease-out-strong:cubic-bezier(0.23,1,0.32,1);--ease-in-out-strong:cubic-bezier(0.77,0,0.175,1);}.ds-plate{margin:0;max-width:560px;}.ds-plate-img{display:flex;align-items:center;justify-content:center;aspect-ratio:16/10;padding:0 24px;background:var(--color-paper-deep);color:var(--color-graphite);font-family:var(--font-sans);font-size:0.875rem;outline:1px solid rgb(20 20 19 / 0.1);outline-offset:-1px;border-radius:0;}"
+    },
+    {
+      "name": "Work Heading",
+      "kind": "custom",
+      "refersTo": "",
+      "description": "Numbered work headline with a serif lede and hyphen-hung notes; the pattern that opens every plate's text column.",
+      "html": "<div class=\"ds-work\"><h2><span>1</span>The Prestige Pickleball Society</h2><p class=\"ds-lede\">One-sentence summary of the work, set as a serif lede.</p><ul><li><span aria-hidden=\"true\">-</span><span>Notes are set in the serif at a 65ch measure.</span></li></ul></div>",
+      "css": ":host{--color-paper:#f1f1ee;--color-paper-deep:#e6e6e1;--color-ink:#141413;--color-graphite:#5d5d58;--color-rule:#cfcfc8;--color-spot:#2034c4;--color-spot-deep:#16248f;--font-sans:\"Schibsted Grotesk Variable\",ui-sans-serif,system-ui,sans-serif;--font-serif:\"Source Serif 4 Variable\",ui-serif,Georgia,serif;--ease-out-expo:cubic-bezier(0.16,1,0.3,1);--ease-out-strong:cubic-bezier(0.23,1,0.32,1);--ease-in-out-strong:cubic-bezier(0.77,0,0.175,1);}.ds-work{color:var(--color-ink);max-width:640px;}.ds-work h2{margin:0;font-family:var(--font-sans);font-size:clamp(1.875rem,2.8vw,2.875rem);line-height:1.02;font-weight:600;letter-spacing:-0.03em;text-wrap:balance;}.ds-work h2 span{margin-right:0.35em;font-weight:400;color:var(--color-graphite);font-variant-numeric:tabular-nums;}.ds-lede{margin:12px 0 0;max-width:52ch;font-family:var(--font-serif);font-size:1.25rem;line-height:1.375;color:var(--color-graphite);}.ds-work ul{list-style:none;margin:28px 0 0;padding:0;max-width:65ch;font-family:var(--font-serif);font-size:1.0625rem;line-height:1.625;}.ds-work li{display:grid;grid-template-columns:1.25rem 1fr;}.ds-work li span:first-child{color:var(--color-graphite);}"
+    },
+    {
+      "name": "Other Work Row",
+      "kind": "custom",
+      "refersTo": "",
+      "description": "Native disclosure row for secondary works: number, title, serif summary, plus icon that rotates open; paper-deep wash on hover.",
+      "html": "<details class=\"ds-row\"><summary><span>5</span><span><span class=\"t\">Other work title</span><span class=\"s\">One-line serif summary of the work.</span></span><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><line x1=\"12\" y1=\"5\" x2=\"12\" y2=\"19\"></line><line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"></line></svg></summary><p>Plate and data column appear here when open.</p></details>",
+      "css": ":host{--color-paper:#f1f1ee;--color-paper-deep:#e6e6e1;--color-ink:#141413;--color-graphite:#5d5d58;--color-rule:#cfcfc8;--color-spot:#2034c4;--color-spot-deep:#16248f;--font-sans:\"Schibsted Grotesk Variable\",ui-sans-serif,system-ui,sans-serif;--font-serif:\"Source Serif 4 Variable\",ui-serif,Georgia,serif;--ease-out-expo:cubic-bezier(0.16,1,0.3,1);--ease-out-strong:cubic-bezier(0.23,1,0.32,1);--ease-in-out-strong:cubic-bezier(0.77,0,0.175,1);}.ds-row{max-width:640px;border-top:1px solid var(--color-ink);border-bottom:1px solid var(--color-rule);font-family:var(--font-sans);color:var(--color-ink);}.ds-row summary{display:grid;grid-template-columns:2rem 1fr auto;align-items:baseline;column-gap:12px;min-height:44px;padding:16px 0;cursor:pointer;list-style:none;transition:background-color 200ms;}.ds-row summary::-webkit-details-marker{display:none;}.ds-row summary:hover{background:rgb(230 230 225 / 0.6);}.ds-row summary:focus-visible{outline:2px solid var(--color-spot);outline-offset:3px;}.ds-row summary>span:first-child{color:var(--color-graphite);font-variant-numeric:tabular-nums;}.ds-row .t{display:block;font-size:1.125rem;line-height:1.25;font-weight:600;letter-spacing:-0.01em;}.ds-row .s{display:block;margin-top:4px;font-family:var(--font-serif);color:var(--color-graphite);}.ds-row svg{align-self:center;transition:transform 200ms var(--ease-out-strong);}.ds-row[open] svg{transform:rotate(45deg);}.ds-row p{margin:0 0 24px 2.75rem;font-family:var(--font-serif);}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Architect's Monograph",
+    "overview": "The site is printed matter more than a web app: a practice monograph that opens on a calling card. The cover sets Karl's name large beside a small contents page of four plate thumbnails; choosing one opens the book at that plate. Inside, each piece of work is a plate, numbered, followed by its title, a serif note, and a data column of recorded facts (period, context, role, stack, link). The page sits on cool uncoated paper in near-black ink. Structure comes from hairline rules and a strict two-column spread, not from containers. In the book, a sticky left column holds the name, role, motto, the two actions, a numbered index of works, and the education and location lines. A single ultramarine spot marks where the reader is and what they can act on.\n\nDensity is editorial. Display type is tight and heavy, notes are set in a readable serif measure, and facts are small, tabular, and aligned to a fixed term column. Nothing floats, lifts, or glows. Depth comes from the photograph (the plate) and the paper tone, never from shadow. Motion has two signatures: the chosen thumbnail travelling from the cover into its plate, and the index mark sliding to the work in view. Everything else is small color and underline shifts.\n\nThe system rejects the developer-portfolio default: no hero banner over a grid of boxed cards, no modal detail views, no cards, no shadows, no pill chips, no tracked uppercase eyebrow labels. The cover's thumbnails are an unboxed contents page, image and caption on bare paper, not cards.",
+    "keyCharacteristics": [
+      "Paper, ink, graphite and hairline rules carry the whole page; one ultramarine spot does the pointing.",
+      "Two views: a calling-card cover and the book. The cover's numbered thumbnails are the book's contents.",
+      "Works are plates: a full-width screenshot, then a numbered title, serif note, and a ruled data column.",
+      "A grotesk for names, titles and data; a serif for notes and ledes. Tabular figures everywhere numbers appear.",
+      "Square corners on everything. Rules, not boxes.",
+      "Two signature motions: the thumbnail flies into its plate, and the index mark slides to the section in view."
+    ],
+    "rules": [
+      {
+        "name": "The One Spot Rule",
+        "body": "Ultramarine marks only position (the index mark, focus), action (the primary button, links, the contact email), and selection. It never decorates a heading, a background panel, or an icon at rest.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two-Weight Rule",
+        "body": "Lists and data columns open with an ink rule and divide with hairline rules. Ink rule on top, hairlines between, nothing around.",
+        "section": "colors"
+      },
+      {
+        "name": "The Written / Recorded Rule",
+        "body": "Serif for anything Karl wrote as prose; grotesk for anything that is a name, a fact, a number, or a control. Never set a fact in the serif or a note in the grotesk.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Figures Rule",
+        "body": "Every number (work numbers, index numbers, thumbnail numerals, years, periods) uses tabular figures so columns align.",
+        "section": "typography"
+      },
+      {
+        "name": "The No Eyebrow Rule",
+        "body": "Section context comes from the headline and the index, not from small uppercase tracked labels above headings. Labels stay sentence case and untracked.",
+        "section": "typography"
+      },
+      {
+        "name": "The Plain Hyphen Rule",
+        "body": "En and em dashes are not used anywhere in the copy. Date ranges use a spaced hyphen with a non-breaking space before it (\"Jan - May 2025\", \"Jul 2026 - present\") so the range never wraps at the hyphen.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Paper Rule",
+        "body": "Surfaces never lift. State is shown with color (graphite to ink, spot to spot-deep), weight (500 to 600 for the active index entry), a darkening edge or underline, a paper-deep wash, or a slight press (scale 0.97) on the two actions, never with elevation.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do present each significant work as a plate: full-width screenshot, headline with its number, serif lede, notes, then the ruled data column.",
+      "Do give every featured work a cover thumbnail: 16:9, top-cropped, numbered, titled and dated; supply a dedicated crop when the top of the plate does not read small.",
+      "Do open every list or data column with a 1px ink rule and divide its rows with 1px hairlines.",
+      "Do keep ultramarine to the index mark, links, the primary action, focus, and selection.",
+      "Do use tabular figures for every number and keep facts in the grotesk.",
+      "Do write date ranges with a spaced hyphen and a non-breaking space before it.",
+      "Do keep every interactive row and button at least 44px tall, and show focus with the 2px spot outline at 3px offset.",
+      "Do respect reduced motion: smooth scroll off, no image flight or mark slide, fades only."
+    ],
+    "donts": [
+      "Don't wrap content in cards, panels with borders on all sides, or rounded containers.",
+      "Don't add shadows or hover lifts; state changes are color, weight, an edge or underline, or a paper-deep wash.",
+      "Don't use pill chips or tags for stack items; stack is a comma-separated fact.",
+      "Don't put small uppercase tracked eyebrow labels above headings.",
+      "Don't open work details in a modal; details expand in place or live on the page.",
+      "Don't introduce a second accent hue or use spot as a background panel.",
+      "Don't use en or em dashes in copy."
+    ]
+  }
+}

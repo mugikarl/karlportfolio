@@ -1,13 +1,172 @@
 @import "tailwindcss";
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  scroll-behavior: smooth;
+@theme {
+  --color-paper: #f1f1ee;
+  --color-paper-deep: #e6e6e1;
+  --color-ink: #141413;
+  --color-graphite: #5d5d58;
+  --color-rule: #cfcfc8;
+  --color-spot: #2034c4;
+  --color-spot-deep: #16248f;
+
+  --font-sans: "Schibsted Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Source Serif 4 Variable", ui-serif, Georgia, serif;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-#root {
-  min-height: 100vh;
+@layer base {
+  html {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    scrollbar-color: var(--color-graphite) var(--color-paper);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-paper);
+  }
+
+  ::selection {
+    background: var(--color-spot);
+    color: var(--color-paper);
+  }
+
+  a {
+    text-underline-offset: 0.22em;
+    text-decoration-thickness: 1px;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-spot);
+    outline-offset: 3px;
+  }
+
+  /* Headings receive focus programmatically to orient screen readers; no ring. */
+  :is(h1, h2)[tabindex="-1"]:focus-visible {
+    outline: none;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p,
+  li {
+    text-wrap: pretty;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer components {
+  .disclosure-body {
+    transition:
+      opacity 200ms var(--ease-out-expo),
+      transform 200ms var(--ease-out-expo);
+
+    @starting-style {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .disclosure-body {
+      transition: opacity 200ms ease;
+
+      @starting-style {
+        transform: none;
+      }
+    }
+  }
+}
+
+/* Cover <-> book. The page cross-fades; only the chosen screenshot travels. */
+::view-transition-old(root) {
+  animation: vt-out 160ms var(--ease-out-strong) both;
+}
+
+::view-transition-new(root) {
+  animation: vt-in 300ms var(--ease-out-strong) 240ms both;
+}
+
+::view-transition-group(active-plate) {
+  animation-duration: 460ms;
+  animation-timing-function: var(--ease-in-out-strong);
+}
+
+/* The thumbnail is a top-cropped view of the same screenshot, so the new
+   image alone can fly from its box without a cross-fade. */
+::view-transition-old(active-plate) {
+  animation: none;
+  opacity: 0;
+}
+
+::view-transition-new(active-plate) {
+  animation: none;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+/* A thumbnail cropped differently from its plate cross-fades into it. */
+html[data-vt-xfade]::view-transition-old(active-plate) {
+  opacity: 1;
+  height: 100%;
+  object-fit: cover;
+  animation: vt-out 220ms var(--ease-out-strong) both;
+}
+
+html[data-vt-xfade]::view-transition-new(active-plate) {
+  animation: vt-fade 220ms var(--ease-out-strong) both;
+}
+
+html[data-vt="exit"]::view-transition-old(root) {
+  animation-duration: 120ms;
+}
+
+html[data-vt="exit"]::view-transition-new(root) {
+  animation: vt-fade 220ms var(--ease-out-strong) 60ms both;
+}
+
+@keyframes vt-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes vt-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@keyframes vt-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(active-plate) {
+    animation: none;
+  }
+
+  ::view-transition-new(root) {
+    animation: vt-fade 200ms ease both;
+  }
 }
