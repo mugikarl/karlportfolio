@@ -1,42 +1,68 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import { flushSync } from "react-dom";
+import BookNav from "./components/BookNav";
 import Cover from "./components/Cover";
-import WorksIndex from "./components/WorksIndex";
+import SectionHead from "./components/SectionHead";
+import { bookContainer } from "./components/layout";
 import { featuredWorks, otherWorks } from "./data/projects";
-import { indexSections, type View } from "./data/sections";
+import { bookSections, workEntries, type View } from "./data/sections";
 import FeaturedWork from "./sections/FeaturedWork";
 import OtherWork from "./sections/OtherWork";
 import Experience from "./sections/Experience";
 import Contact from "./sections/Contact";
 
-const sectionIds = indexSections.map((section) => section.id);
-const knownIds = new Set([...sectionIds, ...otherWorks.map((work) => work.id)]);
+const sectionIds = bookSections.map((section) => section.id);
+const workIds = workEntries.map((work) => work.id);
+const knownIds = new Set([
+  ...sectionIds,
+  ...workIds,
+  ...otherWorks.map((work) => work.id),
+]);
 
 const hashTarget = () => {
   const id = decodeURIComponent(window.location.hash.slice(1));
   return knownIds.has(id) ? id : null;
 };
 
-const useActiveSection = (ids: string[], enabled: boolean) => {
-  const [activeId, setActiveId] = useState(ids[0]);
+// Tracks which section, and which featured work, crosses a thin band near
+// the top third of the viewport. The work keeps its last value between plates.
+const useActiveLocation = (enabled: boolean) => {
+  const [activeSection, setActiveSection] = useState(sectionIds[0]);
+  const [activeWork, setActiveWork] = useState(workIds[0]);
 
   useEffect(() => {
     if (!enabled) return;
+    const inBand = new Set<string>();
     const observer = new IntersectionObserver(
       (entries) => {
-        const visible = entries.filter((entry) => entry.isIntersecting);
-        if (visible.length > 0) setActiveId(visible[0].target.id);
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) inBand.add(entry.target.id);
+          else inBand.delete(entry.target.id);
+        });
+        const section = sectionIds.find((id) => inBand.has(id));
+        const work = workIds.find((id) => inBand.has(id));
+        if (section) setActiveSection(section);
+        if (work) setActiveWork(work);
       },
       { rootMargin: "-35% 0px -60% 0px" },
     );
-    ids.forEach((id) => {
+    [...sectionIds, ...workIds].forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
     return () => observer.disconnect();
-  }, [ids, enabled]);
+  }, [enabled]);
 
-  return [activeId, setActiveId] as const;
+  // Lands the marks on a jump target before the observer catches up.
+  const point = useCallback((id: string) => {
+    if (sectionIds.includes(id)) setActiveSection(id);
+    if (workIds.includes(id)) {
+      setActiveSection("work");
+      setActiveWork(id);
+    }
+  }, []);
+
+  return { activeSection, activeWork, point };
 };
 
 const SHARED = "active-plate";
@@ -47,7 +73,7 @@ const revealTarget = (id: string) => {
   const target = document.getElementById(id);
   if (!target) return null;
   target.scrollIntoView({ behavior: "instant", block: "start" });
-  target.querySelector<HTMLElement>("h2, summary")?.focus({ preventScroll: true });
+  target.querySelector<HTMLElement>("h2, h3, summary")?.focus({ preventScroll: true });
   return target;
 };
 
@@ -99,7 +125,7 @@ function App() {
   useEffect(() => {
     viewRef.current = view;
   }, [view]);
-  const [activeId, setActiveId] = useActiveSection(sectionIds, view === "book");
+  const { activeSection, activeWork, point } = useActiveLocation(view === "book");
 
   const openBook = useCallback(
     (id: string, source: HTMLElement | null) => {
@@ -108,14 +134,14 @@ function App() {
         () => {
           flushSync(() => {
             setView("book");
-            if (sectionIds.includes(id)) setActiveId(id);
+            point(id);
           });
           return revealTarget(id);
         },
         source,
       );
     },
-    [setActiveId],
+    [point],
   );
 
   const closeBook = useCallback(() => {
@@ -156,8 +182,10 @@ function App() {
 
   useEffect(() => {
     const id = hashTarget();
-    if (id) revealTarget(id);
-  }, []);
+    if (!id) return;
+    point(id);
+    revealTarget(id);
+  }, [point]);
 
   if (view === "cover") return <Cover onEnter={enter} />;
 
@@ -169,17 +197,31 @@ function App() {
       >
         Skip to work
       </a>
-      <div className="mx-auto max-w-[1680px] lg:grid lg:grid-cols-[minmax(320px,27%)_minmax(0,1fr)]">
-        <WorksIndex activeId={activeId} onCover={returnToCover} />
-        <main id="main" tabIndex={-1} className="outline-none">
-          {featuredWorks.map((work, i) => (
-            <FeaturedWork key={work.id} work={work} number={i + 1} />
-          ))}
-          <OtherWork />
-          <Experience />
-          <Contact />
-        </main>
-      </div>
+      <BookNav activeSection={activeSection} activeWork={activeWork} onCover={returnToCover} />
+      <main id="main" tabIndex={-1} className="pt-(--nav-works-h) pb-10 outline-none">
+        <section
+          id="work"
+          aria-labelledby="work-title"
+          className={`${bookContainer} scroll-mt-nav-works mt-12 lg:mt-20`}
+        >
+          <SectionHead
+            id="work-title"
+            title="Selected work"
+            lede="Four builds I'd point to first, with what I did on each."
+          />
+          <div className="mt-14 lg:mt-20">
+            {featuredWorks.map((work, i) => (
+              <Fragment key={work.id}>
+                {i > 0 && <hr className="my-16 border-rule lg:my-28" />}
+                <FeaturedWork work={work} number={i + 1} />
+              </Fragment>
+            ))}
+          </div>
+        </section>
+        <OtherWork />
+        <Experience />
+        <Contact />
+      </main>
     </>
   );
 }

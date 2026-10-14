@@ -62,10 +62,15 @@ spacing:
   gap-sm: "12px"
   gutter-mobile: "20px"
   gutter-tablet: "32px"
-  index-gutter: "40px"
   gutter-desktop: "56px"
-  section: "56px"
-  section-desktop: "80px"
+  gutter-wide: "80px"
+  book-measure: "1360px"
+  nav: "64px"
+  nav-works: "44px"
+  section: "96px"
+  section-desktop: "160px"
+  entry: "64px"
+  entry-desktop: "112px"
 components:
   button-primary:
     backgroundColor: "{colors.spot}"
@@ -90,12 +95,11 @@ components:
     textColor: "{colors.ink}"
     typography: "{typography.data}"
     padding: "{spacing.row} 0"
-  index-entry:
+  nav-link:
     textColor: "{colors.graphite}"
     typography: "{typography.data}"
-    padding: "10px 0 10px 12px"
     height: "44px"
-  index-entry-active:
+  nav-link-active:
     textColor: "{colors.ink}"
   cover-thumb:
     backgroundColor: "{colors.paper-deep}"
@@ -117,9 +121,9 @@ components:
 
 **Creative North Star: "The Architect's Monograph"**
 
-The site is printed matter more than a web app: a practice monograph that opens on a calling card. The cover sets Karl's name large beside a small contents page of four plate thumbnails; choosing one opens the book at that plate. Inside, each piece of work is a plate, numbered, followed by its title, a serif note, and a data column of recorded facts (period, context, role, stack, link). The page sits on cool uncoated paper in near-black ink. Structure comes from hairline rules and a strict two-column spread, not from containers. In the book, a sticky left column holds the name, role, motto, the two actions, a numbered index of works, and the education and location lines. A single ultramarine spot marks where the reader is and what they can act on.
+The site is printed matter more than a web app: a practice monograph that opens on a calling card. The cover sets Karl's name large beside a small contents page of four plate thumbnails; choosing one opens the book at that plate. Inside, each piece of work is a plate, numbered, followed by its title, a serif note, and a data column of recorded facts (period, context, role, stack, link). The page sits on cool uncoated paper in near-black ink. Structure comes from hairline rules and a strict two-column spread, not from containers. In the book, a sticky top navbar holds the name, the four sections (Work, Other work, Experience, Contact), the Resume link and Email Karl; while the reader is in Selected work, a second row lists the four works by number. The book has three tiers: section mastheads at display size, entries (works, experience groups) at headline size, and items at title size. A single ultramarine spot marks where the reader is and what they can act on.
 
-Density is editorial. Display type is tight and heavy, notes are set in a readable serif measure, and facts are small, tabular, and aligned to a fixed term column. Nothing floats, lifts, or glows. Depth comes from the photograph (the plate) and the paper tone, never from shadow. Motion has two signatures: the chosen thumbnail travelling from the cover into its plate, and the index mark sliding to the work in view. Everything else is small color and underline shifts.
+Density is editorial. Display type is tight and heavy, notes are set in a readable serif measure, and facts are small, tabular, and aligned to a fixed term column. Nothing floats, lifts, or glows. Depth comes from the photograph (the plate) and the paper tone, never from shadow. Motion has two signatures: the chosen thumbnail travelling from the cover into its plate, and the navbar mark sliding to the section and work in view. Everything else is small color and underline shifts.
 
 The system rejects the developer-portfolio default: no hero banner over a grid of boxed cards, no modal detail views, no cards, no shadows, no pill chips, no tracked uppercase eyebrow labels. The cover's thumbnails are an unboxed contents page, image and caption on bare paper, not cards.
 
@@ -129,14 +133,14 @@ The system rejects the developer-portfolio default: no hero banner over a grid o
 - Works are plates: a full-width screenshot, then a numbered title, serif note, and a ruled data column.
 - A grotesk for names, titles and data; a serif for notes and ledes. Tabular figures everywhere numbers appear.
 - Square corners on everything. Rules, not boxes.
-- Two signature motions: the thumbnail flies into its plate, and the index mark slides to the section in view.
+- Two signature motions: the thumbnail flies into its plate, and the navbar mark slides to the section in view.
 
 ## Colors
 
 A near-neutral paper-and-ink palette with a faint warm-green cast, punctuated by one saturated ultramarine.
 
 ### Primary
-- **Ultramarine Spot** (`spot`): the only chromatic color. Used for the primary action ("Email Karl" fill), work links in the data column, the contact email, the sliding index mark, the focus ring, and text selection. 7.9:1 on paper.
+- **Ultramarine Spot** (`spot`): the only chromatic color. Used for the primary action ("Email Karl" fill), work links in the data column, the contact email, the sliding navbar mark, the focus ring, and text selection. 7.9:1 on paper.
 - **Deep Ultramarine** (`spot-deep`): hover state for every spot element. Never used at rest.
 
 ### Neutral
@@ -147,7 +151,7 @@ A near-neutral paper-and-ink palette with a faint warm-green cast, punctuated by
 - **Hairline** (`rule`): 1px dividers between rows, sections, and the left column edge. Structural only; never used for text.
 
 ### Named Rules
-**The One Spot Rule.** Ultramarine marks only position (the index mark, focus), action (the primary button, links, the contact email), and selection. It never decorates a heading, a background panel, or an icon at rest.
+**The One Spot Rule.** Ultramarine marks only position (the navbar mark, focus), action (the primary button, links, the contact email), and selection. It never decorates a heading, a background panel, or an icon at rest.
 
 **The Two-Weight Rule.** Lists and data columns open with an ink rule and divide with hairline rules. Ink rule on top, hairlines between, nothing around.
 
@@ -160,13 +164,13 @@ A near-neutral paper-and-ink palette with a faint warm-green cast, punctuated by
 
 ### Hierarchy
 - **Cover Display** (600, clamp 3.25rem to 6rem, line-height 0.9, -0.04em): Karl's name on the cover only, broken over two lines (Karl / Natividad).
-- **Display** (600, clamp 2.75rem to 4rem, line-height 0.92, -0.035em): Karl's name at the top of the book's index column, where it is also the link back to the cover.
-- **Headline** (600, clamp 1.875rem to 2.875rem, line-height 1.02, -0.03em): work titles and section titles (Other work, Experience, Contact). Featured titles carry their number in graphite at weight 400 before the title.
-- **Title** (600, 1.125rem, line-height 1.25, -0.01em): entries inside lists: positions, degree, other-work titles. Sub-section heads (Education, Certifications) step up to 1.25rem at -0.015em.
-- **Lede** (serif 400, 1.25rem, line-height 1.375, graphite): the one-sentence summary under each headline, max 52ch. The motto ("I like building things people actually use.") is set the same way under the role line, at 1.25rem on the cover (1.5rem from `md`) and 1.0625rem in the index column.
+- **Display** (600, clamp 2.75rem to 4rem, line-height 0.92, -0.035em): section mastheads in the book (Selected work, Other work, Experience, Contact), the top tier, each opened by a 1px ink rule.
+- **Headline** (600, clamp 1.875rem to 2.875rem, line-height 1.02, -0.03em): featured work titles (`h3`), the entry tier. They carry their number in graphite at weight 400 before the title. Experience groups (Positions, Education, Certifications) sit in the same tier at 1.5rem, -0.02em.
+- **Title** (600, 1.125rem, line-height 1.25, -0.01em): items inside lists: positions, degree, other-work titles. The navbar name uses this size.
+- **Lede** (serif 400, 1.25rem, line-height 1.375, graphite): the one-sentence summary under each headline, max 52ch. The motto ("I like building things people actually use.") is set the same way under the role line, at 1.25rem on the cover (1.5rem from `md`); the book does not repeat it.
 - **Body** (serif 400, 1.0625rem, line-height 1.625): work notes and experience summaries, max 65ch. Notes are a hyphen list hung in a 1.25rem gutter.
 - **Data** (grotesk 400/500, 0.9375rem, tabular figures): fact rows, index entries, cover thumbnail titles (1rem from `sm`, weight 600), buttons and nav links.
-- **Label** (grotesk 400, 0.875rem, graphite): index heading "Works", years, the education and location lines, footer. Sentence case, untracked.
+- **Label** (grotesk 400, 0.875rem, graphite): the navbar works row, years, the education and location lines, footer. Sentence case, untracked.
 
 ### Named Rules
 **The Written / Recorded Rule.** Serif for anything Karl wrote as prose; grotesk for anything that is a name, a fact, a number, or a control. Never set a fact in the serif or a note in the grotesk.
@@ -179,27 +183,27 @@ A near-neutral paper-and-ink palette with a faint warm-green cast, punctuated by
 
 ## Layout
 
-- **Two views:** the cover and the book. The cover is the default view; a link from the cover pushes a history entry with the target's hash and opens the book scrolled to that work or section, with focus on its heading. Browser Back and the name link in the index column return to the cover. Loading the site with a known hash (a work, Other work, Experience, Contact, or an other-work entry) opens the book directly at that target. Modified clicks (new tab, etc.) keep native link behavior.
+- **Two views:** the cover and the book. The cover is the default view; a link from the cover pushes a history entry with the target's hash and opens the book scrolled to that work or section, with focus on its heading. Browser Back and the name link in the navbar return to the cover. Loading the site with a known hash (a work, Other work, Experience, Contact, or an other-work entry) opens the book directly at that target. Modified clicks (new tab, etc.) keep native link behavior.
 - **Cover:** at `lg` and up, a two-column grid inside the 1680px container: identity on the left (`minmax(0, 1fr)`), the contents on the right (up to 40rem), 80px apart, with 6vw side and 9vh vertical padding. The pair is centered vertically in the viewport (`100dvh` minimum) and the columns align at their bottoms. Identity runs top to bottom: name, role, motto, the two actions, then degree and school on two lines and the location line in ink. The contents are a 2x2 of thumbnails (24px column gap, 32px row gap from `sm`), then one 1px ink rule and the Other work / Experience / Contact links.
 - **Cover below lg:** identity stacks above the contents with 20px gutters (32px from `sm`). Below `sm`, the thumbnails become a list of rows, a 7rem thumbnail beside its number, title and year, opened by a hairline.
-- **Book spread:** at `lg` (1024px) and up, a two-column grid inside a 1680px max container: the index column at `minmax(320px, 27%)` and the main column taking the rest. The index column is sticky, full viewport height (`100dvh`), scrolls internally, and is separated by a 1px hairline on its right. Education and location sit at its foot.
-- **Book below lg:** the index column becomes a top header with a bottom hairline; the location line, the numbered works list and plain section links appear inline, and the sliding mark is not shown.
-- **Gutters:** 20px on mobile, 32px from `sm`, 56px in the main column at `lg`; the index column uses 40px.
-- **Vertical rhythm:** sections use 56px top and bottom, 80px at `lg`; every work and section ends on a hairline.
-- **Work spread:** plate at full column width, then a text column and a 260 to 320px data column side by side from `xl` (1280px); stacked below.
-- **Term column:** data rows use a fixed 6.5rem term column; experience rows use an 11rem period column from `md`.
-- **Anchors:** sections use a 16px scroll margin; scrolling is smooth unless reduced motion is requested.
+- **Book:** a sticky top navbar over a single column. Navbar and every section share one measure (`bookContainer` in `src/components/layout.ts`): 1360px max, so edges line up from the name to the footer.
+- **Navbar:** one 64px row from `md` (name, section links, Email Karl; Resume joins from `lg`, where there is room for it beside the links), with a 44px works row dropping beneath it while Selected work is in view. The works row overlays the page (it never shifts content); `main` reserves its height at the top. Below `md`, two rows: name and Email Karl (48px), then the four section links in a sideways-scrolling strip (44px); no works row.
+- **Gutters:** 20px on mobile, 32px from `sm`, 56px at `lg`, 80px at `xl`.
+- **Vertical rhythm:** sections are 96px apart, 160px at `lg` (margin, not padding, so jumps land on the rule). Masthead to first entry is 56px, 80px at `lg`. Featured works are divided by a hairline with 64px (112px at `lg`) either side. Experience groups are 64px (80px at `lg`) apart.
+- **Work spread:** plate at full measure, then a text column and a 280 to 340px data column side by side from `lg`; stacked below.
+- **Term column:** data rows use a fixed 6.5rem term column; experience rows use an 11rem period column from `md`, 14rem from `lg`.
+- **Anchors:** scroll margin clears the navbar (`scroll-mt-nav`) and, for Selected work and its plates, the works row too (`scroll-mt-nav-works`), plus 24px. Heights live in `--nav-h` and `--nav-works-h`. Scrolling is smooth unless reduced motion is requested.
 
 ## Elevation & Depth
 
 Flat. There are no shadows anywhere in the system. Depth comes from the plates themselves (screenshots set full width with a 1px inset ink outline at 10% opacity so pale screenshots keep an edge against the paper), from the same edge on cover thumbnails, and from the paper-deep tone used for placeholders and hover washes.
 
 ### Named Rules
-**The Flat Paper Rule.** Surfaces never lift. State is shown with color (graphite to ink, spot to spot-deep), weight (500 to 600 for the active index entry), a darkening edge or underline, a paper-deep wash, or a slight press (scale 0.97) on the two actions, never with elevation.
+**The Flat Paper Rule.** Surfaces never lift. State is shown with color (graphite to ink, spot to spot-deep), weight (500 to 600 for the active navbar link), a darkening edge or underline, a paper-deep wash, or a slight press (scale 0.97) on the two actions, never with elevation.
 
 ## Shapes
 
-Square everything: 0 radius on buttons, plates, thumbnails, fallback panels, and the index mark. Form is built from lines: 1px hairline rules between rows, a 1px ink rule opening each list, a 1px hairline edge on the index column, and a 3px ultramarine bar as the index mark. Cover thumbnails are 16:9, cropped from the top of the screenshot so the first screen of each product shows. Icons are thin Feather line icons (arrow up-right, plus, lock) at 13 to 18px, always beside text.
+Square everything: 0 radius on buttons, plates, thumbnails, fallback panels, and the navbar mark. Form is built from lines: 1px hairline rules between rows, a 1px ink rule opening each list, a 1px hairline under the navbar, and a 2px ultramarine bar as the navbar mark. Cover thumbnails are 16:9, cropped from the top of the screenshot so the first screen of each product shows. Icons are thin Feather line icons (arrow up-right, plus, lock) at 13 to 18px, always beside text.
 
 ## Components
 
@@ -233,18 +237,22 @@ A View Transition, used when the browser supports it; otherwise the view swaps i
 ### Data Column
 - **Style:** a definition list opened by a 1px ink rule, rows divided by hairlines, 10px vertical padding, graphite term in a 6.5rem column, ink detail beside it. Used for featured works, expanded other works, and (with a wider period column) experience.
 
-### Navigation (Works Index)
-- **Style:** numbered rows in a three-column grid (number, label, year), opened by a hairline and divided by hairlines, each at least 44px tall.
-- **States:** inactive rows are graphite at weight 500; hover moves to ink; the active row is ink at weight 600 with `aria-current="location"`.
-- **Signature mark:** a 3px spot bar on the left edge that moves and stretches to the active row (one transform, 250ms, strong ease-in-out; no motion under reduced motion). The active section is tracked by an IntersectionObserver band from 35% to 40% of the viewport height.
-- **Name link:** the display-size name returns to the cover; hover shifts it to graphite.
+### Section Masthead
+- **Style:** a 1px ink rule, 24px (32px at `lg`) of space, the section title at display size, then an optional serif lede at 52ch. Every top-level section in the book opens with one (`SectionHead`), so the four sections read as peers above the works.
+
+### Navigation (Book Nav)
+- **Style:** a sticky bar on solid paper with a bottom hairline; no blur, no shadow. Section links are grotesk 0.9375rem; the works row lists number, short title (`shortTitle` in the data) and year at 0.875rem.
+- **States:** inactive links are graphite at weight 500; hover moves to ink; the active link is ink at weight 600 with `aria-current="location"`. Each label reserves its semibold width so the row never shifts when the weight changes.
+- **Signature mark:** a 2px spot bar under the active link, sitting on the bar's hairline, that moves and stretches to the next link (one transform, 250ms, strong ease-in-out; no motion under reduced motion). Both rows have one. The section and the work in view are tracked by an IntersectionObserver band from 35% to 40% of the viewport height; the work keeps its last value between plates.
+- **Works row:** fades in with a 4px drop over 160ms on the strong ease-out when Selected work is in view, and is `inert` otherwise.
+- **Name link:** returns to the cover; hover shifts it to graphite.
 
 ### Other Work Disclosure
 - **Style:** native `details` rows: number, title with serif summary, up to three stack items (from `md`), and a plus icon.
 - **States:** hover adds a paper-deep wash at 60%; when open, the plus rotates 45 degrees (200ms, strong ease-out) and the body fades in with a 4px drop (200ms, expo-out; fade only under reduced motion), revealing the plate beside a data column and notes, indented to align with the title.
 
 ### Focus
-- Links and controls show a 2px spot outline at 3px offset on `:focus-visible`. Headings that receive focus programmatically (h1 and h2 with `tabindex="-1"`, focused after a view change) show no ring.
+- Links and controls show a 2px spot outline at 3px offset on `:focus-visible`. One exception: below `md` the navbar's section links sit in a sideways-scrolling strip that would clip an outset ring, so there the ring is inset 2px and each link carries 8px side padding to hold it. Headings that receive focus programmatically (h1 and h2 with `tabindex="-1"`, focused after a view change) show no ring.
 
 ### Contact
 - The email address is the largest spot element on the page (grotesk 600, clamp 1.5rem to 3rem, -0.03em, 2px underline at 30% spot). Profile links and the resume follow as data rows with an arrow. The portrait is small (96px, 160px from `md`) and in full color.
@@ -255,7 +263,7 @@ A View Transition, used when the browser supports it; otherwise the view swaps i
 - **Do** present each significant work as a plate: full-width screenshot, headline with its number, serif lede, notes, then the ruled data column.
 - **Do** give every featured work a cover thumbnail: 16:9, top-cropped, numbered, titled and dated; supply a dedicated crop when the top of the plate does not read small.
 - **Do** open every list or data column with a 1px ink rule and divide its rows with 1px hairlines.
-- **Do** keep ultramarine to the index mark, links, the primary action, focus, and selection.
+- **Do** keep ultramarine to the navbar mark, links, the primary action, focus, and selection.
 - **Do** use tabular figures for every number and keep facts in the grotesk.
 - **Do** write date ranges with a spaced hyphen and a non-breaking space before it.
 - **Do** keep every interactive row and button at least 44px tall, and show focus with the 2px spot outline at 3px offset.

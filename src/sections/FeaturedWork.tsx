@@ -23,7 +23,7 @@ const FeaturedWork = ({ work, number }: FeaturedWorkProps) => {
     <article
       id={work.id}
       aria-labelledby={titleId}
-      className="scroll-mt-4 border-b border-rule px-5 pt-8 pb-14 sm:px-8 lg:px-14 lg:pt-14 lg:pb-20"
+      className="scroll-mt-nav-works"
     >
       <figure>
         <PlateImage
@@ -34,9 +34,9 @@ const FeaturedWork = ({ work, number }: FeaturedWorkProps) => {
         />
       </figure>
 
-      <div className="mt-8 grid gap-x-12 gap-y-8 lg:mt-10 xl:grid-cols-[minmax(0,1fr)_minmax(260px,320px)]">
+      <div className="mt-10 grid gap-x-16 gap-y-10 lg:mt-14 lg:grid-cols-[minmax(0,1fr)_minmax(280px,340px)]">
         <div>
-          <h2
+          <h3
             id={titleId}
             tabIndex={-1}
             className="text-[clamp(1.875rem,2.8vw,2.875rem)] leading-[1.02] font-semibold tracking-[-0.03em]"
@@ -45,11 +45,11 @@ const FeaturedWork = ({ work, number }: FeaturedWorkProps) => {
               {number}
             </span>
             {work.title}
-          </h2>
-          <p className="mt-3 max-w-[52ch] font-serif text-xl leading-snug text-graphite">
+          </h3>
+          <p className="mt-4 max-w-[52ch] font-serif text-xl leading-snug text-graphite">
             {work.summary}
           </p>
-          <ul className="mt-7 max-w-[65ch] space-y-4 font-serif text-[1.0625rem] leading-relaxed">
+          <ul className="mt-8 max-w-[65ch] space-y-5 font-serif text-[1.0625rem] leading-relaxed">
             {work.notes.map((note) => (
               <li key={note} className="grid grid-cols-[1.25rem_1fr]">
                 <span aria-hidden className="text-graphite">

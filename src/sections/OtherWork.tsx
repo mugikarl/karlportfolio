@@ -1,5 +1,7 @@
 import { FiPlus } from "react-icons/fi";
 import PlateImage from "../components/PlateImage";
+import SectionHead from "../components/SectionHead";
+import { bookContainer, sectionGap } from "../components/layout";
 import WorkLinkLabel from "../components/WorkLinkLabel";
 import { featuredWorks, linkKindLabel, otherWorks } from "../data/projects";
 
@@ -10,25 +12,19 @@ const OtherWork = () => {
     <section
       id="other-work"
       aria-labelledby="other-work-title"
-      className="scroll-mt-4 border-b border-rule px-5 py-14 sm:px-8 lg:px-14 lg:py-20"
+      className={`${bookContainer} ${sectionGap} scroll-mt-nav`}
     >
-      <h2
+      <SectionHead
         id="other-work-title"
-        tabIndex={-1}
-        className="text-[clamp(1.875rem,2.8vw,2.875rem)] leading-[1.02] font-semibold tracking-[-0.03em]"
-      >
-        Other work
-      </h2>
-      <p className="mt-3 max-w-[52ch] font-serif text-xl leading-snug text-graphite">
-        Earlier builds, coursework, and team contributions. Open any entry for
-        the screenshot and what I did.
-      </p>
+        title="Other work"
+        lede="Earlier builds, coursework, and team contributions. Open any entry for the screenshot and what I did."
+      />
 
-      <ol className="mt-10 border-t border-ink">
+      <ol className="mt-12 border-t border-ink lg:mt-16">
         {otherWorks.map((work, i) => (
-          <li key={work.id} id={work.id} className="border-b border-rule">
+          <li key={work.id} id={work.id} className="scroll-mt-nav border-b border-rule">
             <details className="group">
-              <summary className="grid min-h-11 cursor-pointer list-none grid-cols-[2rem_1fr_auto] items-baseline gap-x-3 py-4 transition-colors duration-200 ease-[ease] hover:bg-paper-deep/60 [&::-webkit-details-marker]:hidden">
+              <summary className="grid min-h-11 cursor-pointer list-none grid-cols-[2.5rem_1fr_auto] items-baseline gap-x-3 py-6 transition-colors duration-200 ease-[ease] hover:bg-paper-deep/60 [&::-webkit-details-marker]:hidden">
                 <span className="text-graphite tabular-nums">{startAt + i}</span>
                 <span>
                   <span className="block text-lg leading-tight font-semibold tracking-[-0.01em]">
@@ -50,7 +46,7 @@ const OtherWork = () => {
                 </span>
               </summary>
 
-              <div className="disclosure-body grid gap-x-10 gap-y-6 pt-2 pb-8 md:grid-cols-[minmax(0,1.5fr)_minmax(220px,1fr)] md:pl-[2.75rem]">
+              <div className="disclosure-body grid gap-x-10 gap-y-6 pt-2 pb-10 md:grid-cols-[minmax(0,1.5fr)_minmax(220px,1fr)] md:pl-[3.25rem]">
                 <PlateImage
                   plate={work.plate}
                   alt={work.alt}

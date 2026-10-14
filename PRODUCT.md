@@ -29,14 +29,14 @@ Tagline: "I like building things people actually use." The earlier "under the ho
 ## Operating Context
 
 - Visitors evaluate on both desktop and mobile, often in short sessions between other candidates.
-- The site opens on a cover (name, role, motto, Email and Resume, four project thumbnails). Choosing a project opens the full monograph: a sticky index column beside large project screenshots with a data column of recorded facts. Back or the name returns to the cover.
+- The site opens on a cover (name, role, motto, Email and Resume, four project thumbnails). Choosing a project opens the full monograph: a sticky top navbar (sections, plus a numbered works row while in Selected work) over large project screenshots with a data column of recorded facts. Back or the name returns to the cover.
 - Contact happens off-site, by email, LinkedIn, or GitHub.
 
 ## Capabilities and Constraints
 
 - Stack: React 19, TypeScript, Vite 7, Tailwind CSS v4, react-icons, and react-router-dom (installed, but the site is currently a single page).
 - Project content lives in `src/data/projects.ts` (`id`, `title`, `description`, `image`, `tech`, `url?`, `contributions`). Every project must keep honest **contribution** statements, because many were team projects.
-- Views: cover, then the monograph (four featured works, Other work, Experience, Contact).
+- Views: cover, then the monograph (Selected work with four featured works, Other work, Experience, Contact).
 - Undecided: whether to add a resume download, an experience/education timeline, or a skills section. Nothing for these exists in the repo yet.
 
 ## Brand Commitments

@@ -1,7 +1,7 @@
 import { useEffect, type MouseEvent } from "react";
 import { featuredWorks } from "../data/projects";
 import { education, profile } from "../data/profile";
-import { indexSections } from "../data/sections";
+import { bookSections } from "../data/sections";
 import { isPlainClick } from "./isPlainClick";
 import { preloadPlate } from "./preloadPlate";
 
@@ -109,8 +109,8 @@ const Cover = ({ onEnter }: CoverProps) => {
         </ul>
 
         <ul className="mt-8 flex flex-wrap gap-x-6 border-t border-ink pt-2">
-          {indexSections
-            .filter((section) => !section.number)
+          {bookSections
+            .filter((section) => section.id !== "work")
             .map((section) => (
               <li key={section.id}>
                 <a

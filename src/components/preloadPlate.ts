@@ -2,7 +2,7 @@ import type { Plate } from "../data/projects";
 
 // Must match the `sizes` FeaturedWork gives a plate, so the browser fetches
 // the same srcset candidate the book will render.
-export const FEATURED_PLATE_SIZES = "(min-width: 1024px) 70vw, 100vw";
+export const FEATURED_PLATE_SIZES = "(min-width: 1360px) 1200px, (min-width: 1024px) calc(100vw - 7rem), 100vw";
 
 const requested = new Set<string>();
 

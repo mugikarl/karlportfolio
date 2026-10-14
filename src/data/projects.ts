@@ -24,6 +24,8 @@ export type Plate = {
 export type Work = {
   id: string;
   title: string;
+  /** Label for the book navbar's works row, where full titles do not fit. */
+  shortTitle?: string;
   summary: string;
   plate: Plate;
   /** Cover thumbnail when the plate's top crop does not read at small sizes. */
@@ -58,6 +60,7 @@ export const featuredWorks: Work[] = [
   {
     id: "prestige-pickleball",
     title: "The Prestige Pickleball Society",
+    shortTitle: "Prestige",
     summary:
       "Court booking and operations platform for a private residential community.",
     plate: plate("pickleinprestige", 1600, 872),
@@ -89,6 +92,7 @@ export const featuredWorks: Work[] = [
   {
     id: "admissions-chatbot",
     title: "Ateneo Admissions and Aid Chatbot",
+    shortTitle: "Chatbot",
     summary:
       "A student-focused chatbot that guides Ateneo de Davao University applicants through admissions and financial aid.",
     plate: plate("chatbot", 1139, 573),
@@ -121,6 +125,7 @@ export const featuredWorks: Work[] = [
   {
     id: "wingman",
     title: "Wingman",
+    shortTitle: "Wingman",
     summary:
       "Restaurant management system for BawkBawk: inventory, orders, sales, and staff attendance in one place.",
     plate: plate("wingman", 1520, 685),
@@ -143,6 +148,7 @@ export const featuredWorks: Work[] = [
   {
     id: "samahan-palaro",
     title: "SAMAHAN Palaro 2024-25",
+    shortTitle: "Palaro",
     summary:
       "The official event and gallery website for SAMAHAN Palaro 2024-25 at Ateneo de Davao University.",
     plate: plate("palaro", 1600, 779),

@@ -1,5 +1,7 @@
 import { FiArrowUpRight } from "react-icons/fi";
 import portrait from "../assets/plates/portrait-480.webp";
+import SectionHead from "../components/SectionHead";
+import { bookContainer, sectionGap } from "../components/layout";
 import { profile } from "../data/profile";
 
 const Contact = () => {
@@ -9,21 +11,15 @@ const Contact = () => {
     <section
       id="contact"
       aria-labelledby="contact-title"
-      className="scroll-mt-4 px-5 pt-14 pb-10 sm:px-8 lg:px-14 lg:pt-20"
+      className={`${bookContainer} ${sectionGap} scroll-mt-nav`}
     >
-      <h2
+      <SectionHead
         id="contact-title"
-        tabIndex={-1}
-        className="text-[clamp(1.875rem,2.8vw,2.875rem)] leading-[1.02] font-semibold tracking-[-0.03em]"
-      >
-        Contact
-      </h2>
-      <p className="mt-3 max-w-[44ch] font-serif text-xl leading-snug text-graphite">
-        Open to remote and onsite roles, including Davao City, and to
-        freelance work. Based in {profile.location}.
-      </p>
+        title="Contact"
+        lede={`Open to remote and onsite roles, including Davao City, and to freelance work. Based in ${profile.location}.`}
+      />
 
-      <div className="mt-10 grid gap-x-12 gap-y-10 border-t border-ink pt-10 md:grid-cols-[minmax(0,1fr)_auto]">
+      <div className="mt-12 grid gap-x-12 gap-y-10 lg:mt-16 md:grid-cols-[minmax(0,1fr)_auto]">
         <div>
           <a
             href={`mailto:${profile.email}`}
@@ -81,7 +77,7 @@ const Contact = () => {
         />
       </div>
 
-      <footer className="mt-16 flex flex-col gap-2 border-t border-rule pt-5 text-sm text-graphite md:flex-row md:justify-between">
+      <footer className="mt-24 flex flex-col gap-2 border-t border-rule pt-5 text-sm text-graphite md:flex-row md:justify-between">
         <p>© {year} {profile.name}</p>
         <p>
           Set in Schibsted Grotesk and Source Serif 4. Built with React,
