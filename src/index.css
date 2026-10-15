@@ -21,7 +21,7 @@
   /* Book navbar height: two rows on phones, one from md, plus the works
      row that drops under it while reading Selected work. */
   :root {
-    --nav-h: 93px;
+    --nav-h: 105px;
     --nav-works-h: 0px;
   }
 
@@ -108,6 +108,30 @@
       font-weight: 600;
       pointer-events: none;
       user-select: none;
+    }
+  }
+
+  /* Thin ink corner marks just outside a portrait: 12px arms, 6px off the
+     photo's edge. Drawn on ::before so the image keeps its own outline. */
+  .corner-frame {
+    position: relative;
+
+    &::before {
+      --arm: 12px;
+      content: "";
+      position: absolute;
+      inset: -6px;
+      pointer-events: none;
+      background:
+        linear-gradient(var(--color-ink), var(--color-ink)) 0 0 / var(--arm) 1px,
+        linear-gradient(var(--color-ink), var(--color-ink)) 0 0 / 1px var(--arm),
+        linear-gradient(var(--color-ink), var(--color-ink)) 100% 0 / var(--arm) 1px,
+        linear-gradient(var(--color-ink), var(--color-ink)) 100% 0 / 1px var(--arm),
+        linear-gradient(var(--color-ink), var(--color-ink)) 0 100% / var(--arm) 1px,
+        linear-gradient(var(--color-ink), var(--color-ink)) 0 100% / 1px var(--arm),
+        linear-gradient(var(--color-ink), var(--color-ink)) 100% 100% / var(--arm) 1px,
+        linear-gradient(var(--color-ink), var(--color-ink)) 100% 100% / 1px var(--arm);
+      background-repeat: no-repeat;
     }
   }
 

@@ -66,15 +66,17 @@ const Contact = () => {
           </ul>
         </div>
 
-        <img
-          src={portrait}
-          alt="Portrait of Karl Natividad"
-          width={480}
-          height={593}
-          loading="lazy"
-          decoding="async"
-          className="order-first h-auto w-24 bg-paper-deep md:order-none md:w-40"
-        />
+        <figure className="corner-frame order-first ml-1.5 w-24 self-start md:order-none md:w-40">
+          <img
+            src={portrait}
+            alt="Portrait of Karl Natividad"
+            width={480}
+            height={593}
+            loading="lazy"
+            decoding="async"
+            className="block h-auto w-full bg-paper-deep outline outline-1 -outline-offset-1 outline-ink/10"
+          />
+        </figure>
       </div>
 
       <footer className="mt-24 flex flex-col gap-2 border-t border-rule pt-5 text-sm text-graphite md:flex-row md:justify-between">

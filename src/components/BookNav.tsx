@@ -64,10 +64,13 @@ const BookNav = ({ activeSection, activeWork, onCover }: BookNavProps) => {
     const strip = list?.parentElement;
     const row = list?.querySelector<HTMLElement>(`[data-target="${activeSection}"]`);
     if (!strip || !row || strip.scrollWidth <= strip.clientWidth) return;
-    const left = row.offsetLeft;
+    // Measure against the strip itself (it has side padding), and keep the
+    // link clear of the faded right edge.
+    const fade = 24;
+    const left = row.getBoundingClientRect().left - strip.getBoundingClientRect().left;
     const right = left + row.offsetWidth;
-    if (left < strip.scrollLeft || right > strip.scrollLeft + strip.clientWidth) {
-      strip.scrollTo({ left: Math.max(0, left - 20) });
+    if (left < 0 || right > strip.clientWidth - fade) {
+      strip.scrollTo({ left: Math.max(0, strip.scrollLeft + left - 20) });
     }
   }, [activeSection]);
 
@@ -76,7 +79,7 @@ const BookNav = ({ activeSection, activeWork, onCover }: BookNavProps) => {
       <div
         className={`${bookContainer} grid grid-cols-[minmax(0,1fr)_auto] items-center md:grid-cols-[auto_minmax(0,1fr)_auto]`}
       >
-        <p className="flex h-12 items-center md:h-16">
+        <p className="flex h-14 items-center md:h-16">
           <a
             href="/"
             onClick={handleCover}
@@ -87,11 +90,13 @@ const BookNav = ({ activeSection, activeWork, onCover }: BookNavProps) => {
           </a>
         </p>
 
+        {/* Below md the strip scrolls under the docked Email button, so its
+            right edge fades to show there is more. */}
         <nav
           aria-label="Sections"
-          className="no-scrollbar col-span-2 -mx-5 overflow-x-auto border-t border-rule px-5 sm:-mx-8 sm:px-8 md:col-span-1 md:mx-0 md:ml-8 md:self-stretch lg:ml-12 md:overflow-visible md:border-t-0 md:px-0"
+          className="no-scrollbar -ml-5 self-stretch overflow-x-auto border-t border-rule pl-5 [mask-image:linear-gradient(to_right,#000_calc(100%-1.5rem),transparent)] sm:-ml-8 sm:pl-8 md:ml-8 md:overflow-visible md:border-t-0 md:pl-0 md:[mask-image:none] lg:ml-12"
         >
-          <ol ref={sectionsRef} className="relative flex h-11 gap-x-6 md:h-full md:gap-x-8">
+          <ol ref={sectionsRef} className="relative flex h-12 gap-x-6 pr-6 md:h-full md:gap-x-8 md:pr-0">
             <Mark mark={sectionMark} />
             {bookSections.map((section) => {
               const active = section.id === activeSection;
@@ -100,7 +105,7 @@ const BookNav = ({ activeSection, activeWork, onCover }: BookNavProps) => {
                   <a
                     href={`#${section.id}`}
                     aria-current={active ? "location" : undefined}
-                    className={`flex items-center text-[0.9375rem] whitespace-nowrap transition-colors duration-200 ease-[ease] max-md:-mx-2 max-md:px-2 max-md:focus-visible:-outline-offset-2 ${linkTone(active)}`}
+                    className={`flex items-center text-base whitespace-nowrap transition-colors duration-200 ease-[ease] max-md:-mx-2 max-md:px-2 max-md:focus-visible:-outline-offset-2 md:text-[0.9375rem] ${linkTone(active)}`}
                   >
                     <span
                       data-mark
@@ -121,18 +126,27 @@ const BookNav = ({ activeSection, activeWork, onCover }: BookNavProps) => {
             href={profile.resume}
             target="_blank"
             rel="noreferrer"
-            className="hidden min-h-11 items-center text-[0.9375rem] font-semibold underline decoration-ink/30 transition-[text-decoration-color,scale] duration-[160ms] ease-out-strong hover:decoration-ink active:scale-[0.97] lg:inline-flex"
+            className="inline-flex min-h-11 items-center text-[0.9375rem] font-semibold underline decoration-ink/30 transition-[text-decoration-color,scale] duration-[160ms] ease-out-strong hover:decoration-ink active:scale-[0.97] md:hidden lg:inline-flex"
           >
             Resume (PDF)
             <span className="sr-only"> (opens in a new tab)</span>
           </a>
           <a
             href={`mailto:${profile.email}`}
-            className="inline-flex min-h-11 items-center bg-spot px-4 text-[0.9375rem] font-semibold text-paper transition-[background-color,scale] duration-[160ms] ease-out-strong hover:bg-spot-deep active:scale-[0.97] md:px-5"
+            className="hidden min-h-11 items-center bg-spot px-5 text-[0.9375rem] font-semibold text-paper transition-[background-color,scale] duration-[160ms] ease-out-strong hover:bg-spot-deep active:scale-[0.97] md:inline-flex"
           >
-            Email Karl
+            Email me
           </a>
         </div>
+
+        {/* Phones: Email docks at the end of the section strip, full strip
+            height and flush to the screen edge. */}
+        <a
+          href={`mailto:${profile.email}`}
+          className="col-start-2 row-start-2 -mr-5 inline-flex items-center self-stretch bg-spot px-5 text-base font-semibold text-paper transition-colors duration-[160ms] ease-out-strong hover:bg-spot-deep focus-visible:outline-paper focus-visible:-outline-offset-4 active:bg-spot-deep sm:-mr-8 sm:px-8 md:hidden"
+        >
+          Email me
+        </a>
       </div>
 
       <nav

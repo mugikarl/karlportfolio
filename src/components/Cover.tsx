@@ -1,4 +1,5 @@
 import { useEffect, type MouseEvent } from "react";
+import portrait from "../assets/plates/portrait-480.webp";
 import { featuredWorks } from "../data/projects";
 import { education, profile } from "../data/profile";
 import { bookSections } from "../data/sections";
@@ -30,15 +31,28 @@ const Cover = ({ onEnter }: CoverProps) => {
   return (
     <div className="mx-auto min-h-dvh max-w-[1680px] px-5 pt-12 pb-10 sm:px-8 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,40rem)] lg:content-center lg:items-end lg:gap-20 lg:px-[6vw] lg:py-[9vh]">
       <header>
-        <h1
-          id="cover-title"
-          tabIndex={-1}
-          className="text-[clamp(3.25rem,7vw,6rem)] leading-[0.9] font-semibold tracking-[-0.04em]"
-        >
-          Karl
-          <br />
-          Natividad
-        </h1>
+        <div className="flex flex-wrap items-start justify-between gap-x-6 gap-y-8">
+          <h1
+            id="cover-title"
+            tabIndex={-1}
+            className="text-[clamp(3.25rem,7vw,6rem)] leading-[0.9] font-semibold tracking-[-0.04em]"
+          >
+            Karl
+            <br />
+            Natividad
+          </h1>
+          {/* Beside the name; wraps below it when the column is too narrow. */}
+          <figure className="corner-frame mt-2 mr-2 w-21 shrink-0 md:w-30 lg:w-34">
+            <img
+              src={portrait}
+              alt="Portrait of Karl Natividad"
+              width={480}
+              height={593}
+              decoding="async"
+              className="block h-auto w-full bg-paper-deep outline outline-1 -outline-offset-1 outline-ink/10"
+            />
+          </figure>
+        </div>
         <p className="mt-7 text-xl font-medium md:text-2xl">{profile.role}</p>
         <p className="mt-1.5 font-serif text-xl text-graphite md:text-2xl">
           {profile.tagline}
@@ -49,7 +63,7 @@ const Cover = ({ onEnter }: CoverProps) => {
             href={`mailto:${profile.email}`}
             className="inline-flex min-h-11 items-center bg-spot px-5 text-[0.9375rem] font-semibold text-paper transition-[background-color,scale] duration-[160ms] ease-out-strong hover:bg-spot-deep active:scale-[0.97]"
           >
-            Email Karl
+            Email me
           </a>
           <a
             href={profile.resume}

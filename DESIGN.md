@@ -121,7 +121,7 @@ components:
 
 **Creative North Star: "The Architect's Monograph"**
 
-The site is printed matter more than a web app: a practice monograph that opens on a calling card. The cover sets Karl's name large beside a small contents page of four plate thumbnails; choosing one opens the book at that plate. Inside, each piece of work is a plate, numbered, followed by its title, a serif note, and a data column of recorded facts (period, context, role, stack, link). The page sits on cool uncoated paper in near-black ink. Structure comes from hairline rules and a strict two-column spread, not from containers. In the book, a sticky top navbar holds the name, the four sections (Work, Other work, Experience, Contact), the Resume link and Email Karl; while the reader is in Selected work, a second row lists the four works by number. The book has three tiers: section mastheads at display size, entries (works, experience groups) at headline size, and items at title size. A single ultramarine spot marks where the reader is and what they can act on.
+The site is printed matter more than a web app: a practice monograph that opens on a calling card. The cover sets Karl's name large beside a small contents page of four plate thumbnails; choosing one opens the book at that plate. Inside, each piece of work is a plate, numbered, followed by its title, a serif note, and a data column of recorded facts (period, context, role, stack, link). The page sits on cool uncoated paper in near-black ink. Structure comes from hairline rules and a strict two-column spread, not from containers. In the book, a sticky top navbar holds the name, the four sections (Work, Other work, Experience, Contact), the Resume link and Email me; while the reader is in Selected work, a second row lists the four works by number. The book has three tiers: section mastheads at display size, entries (works, experience groups) at headline size, and items at title size. A single ultramarine spot marks where the reader is and what they can act on.
 
 Density is editorial. Display type is tight and heavy, notes are set in a readable serif measure, and facts are small, tabular, and aligned to a fixed term column. Nothing floats, lifts, or glows. Depth comes from the photograph (the plate) and the paper tone, never from shadow. Motion has two signatures: the chosen thumbnail travelling from the cover into its plate, and the navbar mark sliding to the section and work in view. Everything else is small color and underline shifts.
 
@@ -140,7 +140,7 @@ The system rejects the developer-portfolio default: no hero banner over a grid o
 A near-neutral paper-and-ink palette with a faint warm-green cast, punctuated by one saturated ultramarine.
 
 ### Primary
-- **Ultramarine Spot** (`spot`): the only chromatic color. Used for the primary action ("Email Karl" fill), work links in the data column, the contact email, the sliding navbar mark, the focus ring, and text selection. 7.9:1 on paper.
+- **Ultramarine Spot** (`spot`): the only chromatic color. Used for the primary action ("Email me" fill), work links in the data column, the contact email, the sliding navbar mark, the focus ring, and text selection. 7.9:1 on paper.
 - **Deep Ultramarine** (`spot-deep`): hover state for every spot element. Never used at rest.
 
 ### Neutral
@@ -184,10 +184,10 @@ A near-neutral paper-and-ink palette with a faint warm-green cast, punctuated by
 ## Layout
 
 - **Two views:** the cover and the book. The cover is the default view; a link from the cover pushes a history entry with the target's hash and opens the book scrolled to that work or section, with focus on its heading. Browser Back and the name link in the navbar return to the cover. Loading the site with a known hash (a work, Other work, Experience, Contact, or an other-work entry) opens the book directly at that target. Modified clicks (new tab, etc.) keep native link behavior.
-- **Cover:** at `lg` and up, a two-column grid inside the 1680px container: identity on the left (`minmax(0, 1fr)`), the contents on the right (up to 40rem), 80px apart, with 6vw side and 9vh vertical padding. The pair is centered vertically in the viewport (`100dvh` minimum) and the columns align at their bottoms. Identity runs top to bottom: name, role, motto, the two actions, then degree and school on two lines and the location line in ink. The contents are a 2x2 of thumbnails (24px column gap, 32px row gap from `sm`), then one 1px ink rule and the Other work / Experience / Contact links.
+- **Cover:** at `lg` and up, a two-column grid inside the 1680px container: identity on the left (`minmax(0, 1fr)`), the contents on the right (up to 40rem), 80px apart, with 6vw side and 9vh vertical padding. The pair is centered vertically in the viewport (`100dvh` minimum) and the columns align at their bottoms. Identity runs top to bottom: name with the portrait beside it (it wraps below the name when the column is too narrow), role, motto, the two actions, then degree and school on two lines and the location line in ink. The contents are a 2x2 of thumbnails (24px column gap, 32px row gap from `sm`), then one 1px ink rule and the Other work / Experience / Contact links.
 - **Cover below lg:** identity stacks above the contents with 20px gutters (32px from `sm`). Below `sm`, the thumbnails become a list of rows, a 7rem thumbnail beside its number, title and year, opened by a hairline.
 - **Book:** a sticky top navbar over a single column. Navbar and every section share one measure (`bookContainer` in `src/components/layout.ts`): 1360px max, so edges line up from the name to the footer.
-- **Navbar:** one 64px row from `md` (name, section links, Email Karl; Resume joins from `lg`, where there is room for it beside the links), with a 44px works row dropping beneath it while Selected work is in view. The works row overlays the page (it never shifts content); `main` reserves its height at the top. Below `md`, two rows: name and Email Karl (48px), then the four section links in a sideways-scrolling strip (44px); no works row.
+- **Navbar:** one 64px row from `md` (name, section links, Email me; Resume joins from `lg`, where there is room for it beside the links), with a 44px works row dropping beneath it while Selected work is in view. The works row overlays the page (it never shifts content); `main` reserves its height at the top. Below `md`, two rows: name and Resume (PDF) (56px), then the four section links in a sideways-scrolling strip (48px, 1rem labels) with Email me docked at its end as a full-height spot block flush to the screen edge. The strip fades out over its last 24px under the dock, and the active link scrolls clear of that fade. No works row. `--nav-h` is 105px on phones.
 - **Gutters:** 20px on mobile, 32px from `sm`, 56px at `lg`, 80px at `xl`.
 - **Vertical rhythm:** sections are 96px apart, 160px at `lg` (margin, not padding, so jumps land on the rule). Masthead to first entry is 56px, 80px at `lg`. Featured works are divided by a hairline with 64px (112px at `lg`) either side. Experience groups are 64px (80px at `lg`) apart.
 - **Work spread:** plate at full measure, then a text column and a 280 to 340px data column side by side from `lg`; stacked below.
@@ -209,7 +209,7 @@ Square everything: 0 radius on buttons, plates, thumbnails, fallback panels, and
 
 ### Buttons
 - **Shape:** square (0px), at least 44px tall.
-- **Primary ("Email Karl"):** spot fill, paper text, grotesk 600 at 0.9375rem, 20px horizontal padding. Hover moves to spot-deep and press scales to 0.97, both over 160ms on the strong ease-out.
+- **Primary ("Email me"):** spot fill, paper text, grotesk 600 at 0.9375rem, 20px horizontal padding. Hover moves to spot-deep and press scales to 0.97, both over 160ms on the strong ease-out.
 - **Quiet action ("Resume (PDF)"):** no fill, ink text at 600 with a 1px underline at 30% ink; hover brings the underline to full ink, press scales to 0.97 (160ms, strong ease-out). There is only one filled button per view.
 
 ### Work Links
@@ -251,11 +251,15 @@ A View Transition, used when the browser supports it; otherwise the view swaps i
 - **Style:** native `details` rows: number, title with serif summary, up to three stack items (from `md`), and a plus icon.
 - **States:** hover adds a paper-deep wash at 60%; when open, the plus rotates 45 degrees (200ms, strong ease-out) and the body fades in with a 4px drop (200ms, expo-out; fade only under reduced motion), revealing the plate beside a data column and notes, indented to align with the title.
 
+### Portrait (Corner Frame)
+- **Where:** on the cover beside the name (84px, 120px from `md`, 136px from `lg`), and in Contact.
+- **Style:** the photo keeps the plates' 1px inset ink edge at 10% (its white ground would otherwise dissolve into the paper), and `.corner-frame` draws four 1px ink L-marks, 12px arms, set 6px outside each corner. Corners only: no full border, no shadow, no spot.
+
 ### Focus
 - Links and controls show a 2px spot outline at 3px offset on `:focus-visible`. One exception: below `md` the navbar's section links sit in a sideways-scrolling strip that would clip an outset ring, so there the ring is inset 2px and each link carries 8px side padding to hold it. Headings that receive focus programmatically (h1 and h2 with `tabindex="-1"`, focused after a view change) show no ring.
 
 ### Contact
-- The email address is the largest spot element on the page (grotesk 600, clamp 1.5rem to 3rem, -0.03em, 2px underline at 30% spot). Profile links and the resume follow as data rows with an arrow. The portrait is small (96px, 160px from `md`) and in full color.
+- The email address is the largest spot element on the page (grotesk 600, clamp 1.5rem to 3rem, -0.03em, 2px underline at 30% spot). Profile links and the resume follow as data rows with an arrow. The portrait is small (96px, 160px from `md`), in full color, and carries the corner frame.
 
 ## Do's and Don'ts
 
